@@ -74,84 +74,33 @@ class profile::base (
     include stdlib
     include chocolatey
 
-    $puppetconfig = @(EOT)
-    [main]
-    server=puppet.alan-jenkins.com
-    autoflush=true
-    environment=production
-    | EOT
-
-    file {'C:\ProgramData\PuppetLabs\puppet\etc\puppet.conf':
-      ensure  => file,
-      content => $puppetconfig
-    }
-
     Package { provider => chocolatey, }
 
-    package {'googlechrome':
-      ensure => latest,
-    }
-    package {'filezilla':
-      ensure => latest,
-    }
-    package {'gimp':
-      ensure => latest,
-    }
-    package {'inkscape':
-      ensure => latest,
-    }
-    package {'libreoffice':
-      ensure => latest,
-    }
-    package {'7zip':
-      ensure => latest,
-    }
-    package {'vim':
-      ensure => latest,
-    }
-    package {'vagrant':
-      ensure => latest,
-    }
-    package {'virtualbox':
-      ensure => latest,
-    }
-    package {'putty':
-      ensure => latest,
-    }
-    package {'git':
-      ensure => latest,
-    }
-    package {'autohotkey':
-      ensure => latest,
-    }
-    package {'dropbox':
-      ensure => latest,
-    }
-    package {'googledrive':
-      ensure => latest,
-    }
-    package {'sumatrapdf':
-      ensure => latest,
-    }
-    package {'pidgin':
-      ensure => latest,
-    }
-    package {'classic-shell':
-      ensure => latest,
-    }
-    package {'nmap':
-      ensure => latest,
-    }
-    package {'vlc':
-      ensure => latest,
-    }
-    package {'sysinternals':
-      ensure => latest,
-    }
-    package {'javaruntime':
-      ensure => latest,
-    }
-    package {'sourcetree':
+    $windows_packages = [
+      '7zip',
+      'autohotkey',
+      'classic-shell',
+      'dropbox',
+      'filezilla',
+      'gimp',
+      'git',
+      'googlechrome',
+      'googledrive',
+      'inkscape',
+      'javaruntime',
+      'libreoffice',
+      'nmap',
+      'pidgin',
+      'putty',
+      'sumatrapdf',
+      'sysinternals',
+      'vagrant',
+      'vim',
+      'virtualbox',
+      'vlc',
+    ]
+
+    package {$windows_packages:
       ensure => latest,
     }
   }# }}}
