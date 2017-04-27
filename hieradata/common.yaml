@@ -23,6 +23,7 @@ profile::desktop::desktop_aur_packages:
     - asciinema
     - awless
     - csslint
+    - debian-whois-mkpasswd
     - fortune-mod-vimtips
     - google-chrome
     - keybase-bin
@@ -36,6 +37,7 @@ profile::desktop::desktop_aur_packages:
     - ttf-google-fonts-git
     - unclutter-xfixes-git
     - xboomx-snilius
+    - xss-lock-git
     - yamllint
     - youtube-dl-git
     - zathura-epub-git
@@ -50,8 +52,8 @@ profile::desktop::desktop_packages:
     - compton
     - docker
     - docker-compose
-    - debian-whois-mkpasswd
     - dos2unix
+    - electricsheep
     - evince
     - f2fs-tools
     - feh
@@ -87,6 +89,7 @@ profile::desktop::desktop_packages:
     - xdot
     - xorg-server
     - xorg-xrandr
+    - xscreensaver
 
 profile::i3_desktop::packages:
     - dmenu

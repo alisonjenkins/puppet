@@ -1,7 +1,17 @@
 class profile::base (
   $ntp_servers = [],
   $fallback_ntp_servers = [],
-  $base_packages = [],
+  $base_packages = [
+      'augeas',
+      'aws-cli',
+      'htop',
+      'moreutils',
+      'ncdu',
+      'ranger',
+      'rsync',
+      'ruby-augeas',
+      'tmux'
+  ],
   $user_accounts = {},
 )
 {
@@ -18,16 +28,7 @@ class profile::base (
         notify  => Exec['pacman-Sy'],
     } # }}}
     # {{{ Install packages that should be on all machines.
-    package {[
-      'augeas',
-      'ruby-augeas',
-      'aws-cli',
-      'htop',
-      'ncdu',
-      'ranger',
-      'rsync',
-      'tmux'
-    ]:
+    package {$base_packages:
       ensure => present,
     } # }}}
 # {{{ Sort out timesync and timezones
