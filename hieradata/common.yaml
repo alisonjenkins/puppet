@@ -84,6 +84,7 @@ profile::desktop::desktop_packages:
     - networkmanager-vpnc
     - nmap
     - openssh
+    - pavucontrol
     - pkgfile
     - puppet
     - pwgen
