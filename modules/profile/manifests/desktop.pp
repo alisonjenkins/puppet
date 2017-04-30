@@ -1,7 +1,7 @@
 class profile::desktop (
     $desktop_aur_packages = [],
     $desktop_packages = [],
-    $packager = undef,
+    $packager = 'nobody',
     $magic_keys = 'present',
 )
 {
