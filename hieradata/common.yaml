@@ -91,6 +91,7 @@ profile::desktop::desktop_packages:
     - xdot
     - xorg-server
     - xorg-xdpyinfo
+    - xorg-xkill
     - xorg-xrandr
     - xscreensaver
 
