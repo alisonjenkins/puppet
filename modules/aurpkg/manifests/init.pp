@@ -8,18 +8,20 @@ define aurpkg (
     unless  => '/usr/bin/pacman -Qi cower',
   }
 
-  exec { '/usr/bin/tar xvf /tmp/cower.tar.gz':
-    cwd     => '/tmp/',
-    onlyif  => '/usr/bin/ls /tmp/cower.tar.gz',
-    unless  => '/usr/bin/pacman -Qi cower',
-    require => Exec['download cower']
-  }
-
   file { '/tmp/cower':
     ensure  => directory,
     owner   => $user,
     mode    => '0755',
-    require => Exec['/usr/bin/tar xvf /tmp/cower.tar.gz']
+  }
+
+  exec { 'untar cower':
+    cwd     => '/tmp/',
+    onlyif  => '/usr/bin/ls /tmp/cower.tar.gz',
+    unless  => '/usr/bin/pacman -Qi cower',
+    require => [
+      Exec['download cower'],
+      File['/tmp/cower']
+    ]
   }
 
   exec { 'makepkg cower':
@@ -51,19 +53,24 @@ define aurpkg (
     unless  => '/usr/bin/pacman -Qi pacaur',
   }
 
-  exec { '/usr/bin/tar xvf /tmp/pacaur.tar.gz':
-    cwd     => '/tmp/',
-    onlyif  => '/usr/bin/ls /tmp/pacaur.tar.gz',
-    unless  => '/usr/bin/pacman -Qi pacaur',
-    require => Exec['download pacaur']
-  }
-
   file { '/tmp/pacaur':
     ensure  => directory,
     owner   => $user,
     mode    => '0755',
-    require => Exec['/usr/bin/tar xvf /tmp/pacaur.tar.gz']
+    require => Exec['download pacaur']
   }
+
+  exec { 'untar pacaur':
+    command => '/usr/bin/tar xvf /tmp/pacaur.tar.gz',
+    cwd     => '/tmp/',
+    onlyif  => '/usr/bin/ls /tmp/pacaur.tar.gz',
+    unless  => '/usr/bin/pacman -Qi pacaur',
+    require => [
+      Exec['download pacaur'],
+      File['/tmp/pacaur'],
+    ]
+  }
+
 
   exec { 'makepkg pacaur':
     command => '/usr/bin/makepkg',
