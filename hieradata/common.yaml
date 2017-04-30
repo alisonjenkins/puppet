@@ -71,13 +71,13 @@ profile::desktop::desktop_packages:
     - libreoffice-fresh-en-GB
     - lightdm
     - lightdm-gtk-greeter
+    - lxsession
     - maim
     - nethogs
     - network-manager-applet
     - nmap
     - openssh
     - pkgfile
-    - polkit-gnome
     - puppet
     - pwgen
     - termite
