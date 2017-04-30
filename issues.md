@@ -8,9 +8,6 @@
 # Oops
 
 
-## pkgfile update
-* Write puppet code to enable running commands after installing packages (update pkgfile).
-
 ## polkit-gnome
 * Added to hiera common.
 * Create systemd user unit to start polkit gnome auth agent.
@@ -33,3 +30,5 @@
 * Investigate why the git directory is owned by root.
 
 ## Setup hiera eyaml for passwords.
+
+## Update tflint package.

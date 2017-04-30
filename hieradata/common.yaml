@@ -97,11 +97,13 @@ profile::desktop::desktop_packages:
     - xorg-xdpyinfo
     - xorg-xkill
     - xorg-xrandr
+    - xorg-xrdb
     - xsane
     - xscreensaver
 
 profile::i3_desktop::packages:
     - dmenu
+    - gnome-settings-daemon
     - i3-wm
     - i3blocks
     - i3lock

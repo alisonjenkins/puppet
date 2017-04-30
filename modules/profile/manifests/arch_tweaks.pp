@@ -29,4 +29,10 @@ class profile::arch_tweaks(
     line  => 'BUILDENV=(!distcc color ccache check !sign)',
     match => '^BUILDENV='
   }
+
+  file_line { 'setup parallel make jobs':
+    path  => '/etc/makepkg.conf',
+    line  => 'MAKEFLAGS="-j4"',
+    match => '^MAKEFLAGS=',
+  }
 }

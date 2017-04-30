@@ -14,5 +14,7 @@ hierarchy:
     path: "%{::owner}/nodes/%{::hostname}.yaml"
   - name: "Owner specific common hiera variables"
     path: "%{::owner}/common.yaml"
+  - name: "Model specific hiera configuration"
+    path: "models/%{::dmi.product.name}.yaml"
   - name: "Data common to all machines"
     path: "common.yaml"
