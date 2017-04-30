@@ -1,8 +1,9 @@
 ---
 classes:
+    - profile::arch_tweaks
+    - profile::base
     - profile::desktop
     - profile::i3_desktop
     - profile::libvirt_kvm
     - profile::monitor_hotplug
     - profile::networkmanager
-    - profile::base

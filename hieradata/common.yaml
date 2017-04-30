@@ -47,6 +47,7 @@ profile::desktop::desktop_packages:
     - aria2
     - bind-tools
     - boost
+    - ccache
     - chromium
     - clang
     - compton
