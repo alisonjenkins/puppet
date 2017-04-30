@@ -96,10 +96,12 @@ profile::desktop::desktop_packages:
     - xorg-server
     - xorg-xdpyinfo
     - xorg-xkill
+    - xorg-xmodmap
     - xorg-xrandr
     - xorg-xrdb
     - xsane
     - xscreensaver
+    - xsel
 
 profile::i3_desktop::packages:
     - dmenu
