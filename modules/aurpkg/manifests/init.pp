@@ -15,6 +15,7 @@ define aurpkg (
   }
 
   exec { 'untar cower':
+    command => '/usr/bin/tar xvf /tmp/cower.tar.gz',
     cwd     => '/tmp/',
     onlyif  => '/usr/bin/ls /tmp/cower.tar.gz',
     unless  => '/usr/bin/pacman -Qi cower',
