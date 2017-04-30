@@ -3,17 +3,16 @@ define aurpkg (
   $packages = [],
 ) {
   # {{{ Install cower
-  remote_file {'/tmp/cower.tar.gz':
-    ensure => present,
-    source => 'https://aur.archlinux.org/cgit/aur.git/snapshot/cower.tar.gz',
-    unless => '/usr/bin/pacman -Qi cower'
+  exec {'download cower':
+    command => 'curl https://aur.archlinux.org/cgit/aur.git/snapshot/cower.tar.gz -o /tmp/cower.tar.gz',
+    unless  => '/usr/bin/pacman -Qi cower',
   }
 
   exec { '/usr/bin/tar xvf /tmp/cower.tar.gz':
     cwd     => '/tmp/',
     onlyif  => '/usr/bin/ls /tmp/cower.tar.gz',
     unless  => '/usr/bin/pacman -Qi cower',
-    require => Remote_file['/tmp/cower.tar.gz']
+    require => Exec['download cower']
   }
 
   file { '/tmp/cower':
