@@ -18,7 +18,7 @@ define aurpkg (
   file { '/tmp/cower':
     ensure  => directory,
     owner   => $user,
-    mode    => '0777',
+    mode    => '0755',
     require => Exec['/usr/bin/tar xvf /tmp/cower.tar.gz']
   }
 
@@ -61,7 +61,7 @@ define aurpkg (
   file { '/tmp/pacaur':
     ensure  => directory,
     owner   => $user,
-    mode    => '0777',
+    mode    => '0755',
     require => Exec['/usr/bin/tar xvf /tmp/pacaur.tar.gz']
   }
 
