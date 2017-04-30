@@ -11,9 +11,6 @@
 ## pkgfile update
 * Write puppet code to enable running commands after installing packages (update pkgfile).
 
-## xorg-xkill
-* Added to hiera common.
-
 ## polkit-gnome
 * Added to hiera common.
 * Create systemd user unit to start polkit gnome auth agent.
@@ -21,8 +18,10 @@
 ## networkmanager not configured for any networks.
 
 ## Cups setup for emersons green printer
+* Added cups to be installed as part of desktop profile.
 
 ## Xsane
+* Added xsane to be installed as part of the desktop profile.
 
 ## makepkg configuration
 * Need parallel compilation config.

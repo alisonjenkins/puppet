@@ -50,6 +50,7 @@ profile::desktop::desktop_packages:
     - chromium
     - clang
     - compton
+    - cups
     - docker
     - docker-compose
     - dos2unix
@@ -93,6 +94,7 @@ profile::desktop::desktop_packages:
     - xorg-xdpyinfo
     - xorg-xkill
     - xorg-xrandr
+    - xsane
     - xscreensaver
 
 profile::i3_desktop::packages:
