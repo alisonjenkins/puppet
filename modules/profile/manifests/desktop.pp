@@ -1,7 +1,8 @@
 class profile::desktop (
     $desktop_aur_packages = [],
     $desktop_packages = [],
-    $packager = undef
+    $packager = undef,
+    $magic_keys = 'present',
 )
 {
     package { $desktop_packages: ensure => latest }
@@ -16,5 +17,12 @@ class profile::desktop (
     service { 'lightdm':
         enable  => true,
         require => Package['lightdm']
+    }
+
+    file_line{'magic keys':
+        ensure => $magic_keys,
+        path   => '/etc/sysctl.d/magic_keys.conf',
+        line   => 'kernel.sysrq=1',
+        match  => '^kernel.sysrq=',
     }
 }
