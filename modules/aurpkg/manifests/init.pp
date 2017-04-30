@@ -4,7 +4,7 @@ define aurpkg (
 ) {
   # {{{ Install cower
   exec {'download cower':
-    command => 'curl https://aur.archlinux.org/cgit/aur.git/snapshot/cower.tar.gz -o /tmp/cower.tar.gz',
+    command => '/usr/bin/curl https://aur.archlinux.org/cgit/aur.git/snapshot/cower.tar.gz -o /tmp/cower.tar.gz',
     unless  => '/usr/bin/pacman -Qi cower',
   }
 
@@ -46,17 +46,16 @@ define aurpkg (
     ensure => latest,
   }
 
-  remote_file {'/tmp/pacaur.tar.gz':
-    ensure => present,
-    source => 'https://aur.archlinux.org/cgit/aur.git/snapshot/pacaur.tar.gz',
-    unless => '/usr/bin/pacman -Qi pacaur',
+  exec {'download pacaur':
+    command => '/usr/bin/curl https://aur.archlinux.org/cgit/aur.git/snapshot/pacaur.tar.gz -o /tmp/pacaur.tar.gz',
+    unless  => '/usr/bin/pacman -Qi pacaur',
   }
 
   exec { '/usr/bin/tar xvf /tmp/pacaur.tar.gz':
     cwd     => '/tmp/',
     onlyif  => '/usr/bin/ls /tmp/pacaur.tar.gz',
     unless  => '/usr/bin/pacman -Qi pacaur',
-    require => Remote_file['/tmp/pacaur.tar.gz']
+    require => Exec['download pacaur']
   }
 
   file { '/tmp/pacaur':
