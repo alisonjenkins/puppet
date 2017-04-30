@@ -62,6 +62,7 @@ profile::desktop::desktop_packages:
     - freemind
     - gimp
     - git
+    - gnome-keyring
     - go
     - graphviz
     - gvim
@@ -69,6 +70,7 @@ profile::desktop::desktop_packages:
     - iotop
     - keepass
     - libreoffice-fresh-en-GB
+    - libsecret
     - lightdm
     - lightdm-gtk-greeter
     - lxsession
