@@ -19,12 +19,11 @@ class profile::desktop (
         require => Package['lightdm']
     }
 
-    file_line{'magic keys':
-        ensure => $magic_keys,
-        path   => '/etc/sysctl.d/magic_keys.conf',
-        line   => 'kernel.sysrq=1',
-        match  => '^kernel.sysrq=',
-        notify => Exec['sysctl refresh']
+    file {'magic keys':
+        ensure  => $magic_keys,
+        path    => '/etc/sysctl.d/magic_keys.conf',
+        content => 'kernel.sysrq=1',
+        notify  => Exec['sysctl refresh']
     }
 
     exec {'sysctl refresh':
