@@ -1,8 +1,8 @@
 class profile::monitor_hotplug
 (
   $user,
-  $int_display_name = 'eDP1',
-  $ext_display_name = 'DP1',
+  $int_display_name = 'eDP-1',
+  $ext_display_name = 'DP-1',
   $ext_display_drm_path = '/sys/class/drm/card0-DP-1',
   $locations = {},
 ) {

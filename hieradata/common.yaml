@@ -72,9 +72,11 @@ profile::desktop::desktop_packages:
     - lightdm-gtk-greeter
     - maim
     - nethogs
+    - network-manager-applet
     - nmap
     - openssh
     - pkgfile
+    - polkit-gnome
     - puppet
     - pwgen
     - termite
@@ -88,6 +90,7 @@ profile::desktop::desktop_packages:
     - xclip
     - xdot
     - xorg-server
+    - xorg-xdpyinfo
     - xorg-xrandr
     - xscreensaver
 
