@@ -1,5 +1,6 @@
 define aurpkg (
-  $user = undef
+  $user = undef,
+  $packages = [],
 ) {
   # {{{ Install cower
   remote_file {'/tmp/cower.tar.gz':
