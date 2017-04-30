@@ -97,6 +97,7 @@ profile::desktop::desktop_packages:
     - wireshark-gtk
     - xclip
     - xdot
+    - xdotool
     - xorg-server
     - xorg-xdpyinfo
     - xorg-xkill
