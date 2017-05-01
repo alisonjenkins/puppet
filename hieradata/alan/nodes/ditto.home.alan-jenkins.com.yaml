@@ -3,6 +3,7 @@ classes:
     - docker::images
     - profile::ditto
     - profile::mdns
+    - profile::secure_ssh
 
 docker::images::images:
     plexinc/pms-docker:
