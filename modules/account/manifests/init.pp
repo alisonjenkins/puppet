@@ -304,32 +304,6 @@ define account (
       }
     }
     # }}}
-    # {{{ Dotfiles code
-    if $user_dotfiles_repo {
-      if $user_dotfiles_commands {
-        $vcs_notify = Exec[$user_dotfiles_commands]
-      }
-      vcsrepo {$user_dotfiles_path:
-        ensure   => latest,
-        owner    => $user_name,
-        group    => $group,
-        provider => $user_dotfiles_provider,
-        source   => $user_dotfiles_repo,
-        revision => $user_dotfiles_revision,
-        require  => [
-          File[$user_home],
-
-        ],
-        notify   => $vcs_notify,
-      }
-      if $user_dotfiles_commands {
-        exec {$user_dotfiles_commands:
-          user        => $user_name,
-          refreshonly => true,
-        }
-      }
-    } ->
-    # }}}
     # {{{ SSH Key code
     $ssh_keys.each | String $key_name, Hash $key | {
       if has_key($key, 'ensure') {
@@ -353,6 +327,29 @@ define account (
           User[$user_name],
           Group[$group],
         ]
+      }
+    }
+    # }}}
+    # {{{ Dotfiles code
+    if $user_dotfiles_repo {
+      if $user_dotfiles_commands {
+        $vcs_notify = Exec[$user_dotfiles_commands]
+      }
+      vcsrepo {$user_dotfiles_path:
+        ensure   => latest,
+        owner    => $user_name,
+        group    => $group,
+        provider => $user_dotfiles_provider,
+        source   => $user_dotfiles_repo,
+        revision => $user_dotfiles_revision,
+        require  => File[$user_home],
+        notify   => $vcs_notify,
+      }
+      if $user_dotfiles_commands {
+        exec {$user_dotfiles_commands:
+          user        => $user_name,
+          refreshonly => true,
+        }
       }
     }
     # }}}
