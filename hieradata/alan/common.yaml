@@ -7,7 +7,6 @@ profile::base::user_accounts:
     alan:
         ensure: present
         uid: 1000
-        password: $6$NgZqE5Owb0$CqRkS3KFI1pIjXtqiYYt7nZjVRSi1lt3gWk8P.Cz9sMNSkRMirKppYd7jM1DCLm/RUCZ1DPIlxW3mlWQ5k5lS0
         groups:
             - wheel
         comment: Alan Jenkins
