@@ -7,10 +7,9 @@
 
 # Oops
 
-
-## polkit-gnome
+## lxsession
 * Added to hiera common.
-* Create systemd user unit to start polkit gnome auth agent.
+* Create systemd user unit to start lxpolkit.
 
 ## networkmanager not configured for any networks.
 
