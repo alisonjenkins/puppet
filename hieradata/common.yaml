@@ -117,6 +117,10 @@ profile::i3_desktop::packages:
     - i3lock
     - i3status
     - mate-notification-daemon
+    - thunar
+    - thunar-archive-plugin
+    - thunar-media-tags-plugin
+    - thunar-volman
 
 profile::desktop::desktop_packages_removed:
     - dmenu-manjaro

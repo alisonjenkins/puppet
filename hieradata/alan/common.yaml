@@ -2,12 +2,6 @@
 profile::desktop::packager: alan
 profile::monitor_hotplug::user: alan
 
-profile::desktop::desktop_packages:
-    - thunar
-    - thunar-archive-plugin
-    - thunar-media-tags-plugin
-    - thunar-volman
-
 # {{{ User accounts
 profile::base::user_accounts:
     alan:
