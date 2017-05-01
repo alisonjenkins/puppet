@@ -30,4 +30,5 @@ profile::base::user_accounts:
             - /usr/bin/mkdir -p /home/alan/.config
             - /usr/bin/sudo -u alan -s /usr/bin/ln -sf /home/alan/git/dotfiles/dotsyncrc /home/alan/.dotsyncrc
             - /usr/bin/sudo -u alan -s /home/alan/git/dotfiles/dotsync/bin/dotsync -L
+            - /usr/bin/sudo -u alan -s chmod 700 /home/alan/git/dotfiles/ssh
 # }}}
