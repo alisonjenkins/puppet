@@ -43,6 +43,7 @@ profile::desktop::desktop_aur_packages:
     - zathura-epub-git
 
 profile::desktop::desktop_packages:
+    - alsa-utils
     - ansible
     - aria2
     - bind-tools
