@@ -18,7 +18,7 @@ define account (
     if has_key($user_hash, 'user_home_mode') {
       $user_home_mode = $user_hash['user_home_mode']
     } else {
-      $user_home_mode = "0770"
+      $user_home_mode = "0750"
     }
 
     if has_key($user_hash, 'ssh_keys') {
