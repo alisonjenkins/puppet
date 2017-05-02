@@ -99,6 +99,7 @@ profile::desktop::desktop_packages:
     - unzip
     - vagrant
     - virtualbox
+    - vlc
     - wget
     - whois
     - wireshark-gtk
