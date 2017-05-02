@@ -89,6 +89,8 @@ profile::desktop::desktop_packages:
     - pkgfile
     - puppet
     - pwgen
+    - python-pip
+    - python2-pip
     - termite
     - the_silver_searcher
     - tig
