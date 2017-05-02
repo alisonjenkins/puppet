@@ -95,6 +95,7 @@ profile::desktop::desktop_packages:
     - termite
     - the_silver_searcher
     - tig
+    - unzip
     - vagrant
     - virtualbox
     - wget
