@@ -91,6 +91,7 @@ profile::desktop::desktop_packages:
     - pwgen
     - python-pip
     - python2-pip
+    - sshuttle
     - termite
     - the_silver_searcher
     - tig
