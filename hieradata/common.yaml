@@ -51,6 +51,7 @@ profile::desktop::desktop_packages:
     - ccache
     - chromium
     - clang
+    - cmus
     - compton
     - cups
     - docker
