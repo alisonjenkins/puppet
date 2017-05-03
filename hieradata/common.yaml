@@ -25,6 +25,7 @@ profile::desktop::desktop_aur_packages:
     - csslint
     - debian-whois-mkpasswd
     - fortune-mod-vimtips
+    - fpm
     - google-chrome
     - keybase-bin
     - nerd-fonts-complete
