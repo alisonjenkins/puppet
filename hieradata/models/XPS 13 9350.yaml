@@ -1,0 +1,2 @@
+classes:
+    - profile::periodic_trim

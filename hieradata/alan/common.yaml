@@ -9,6 +9,7 @@ profile::base::user_accounts:
         uid: 1000
         groups:
             - wheel
+            - docker
         comment: Alan Jenkins
         managehome: true
         ssh_keys:
