@@ -10,7 +10,7 @@ class profile::xps13_touchpad(
   $tap_to_click = 'off'
 ) {
   file { 'X11 touchpad configuration':
-    source => epp("puppet:///modules/data/x11/touchpad.conf"),
+    source => epp("puppet://modules/data/x11/touchpad.conf"),
     path   => $config_path,
     mode   => '0744'
   }
