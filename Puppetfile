@@ -1,4 +1,4 @@
-forge 'forge.puppetlabs.com'
+forge 'https://forge.puppetlabs.com'
 
 # Local modules
 mod 'data', :local => true
