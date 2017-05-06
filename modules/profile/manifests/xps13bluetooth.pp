@@ -4,14 +4,6 @@ class profile::xps13bluetooth (
   $script_path = '/usr/local/bin/xps13-bluetooth-firmware'
 )
 {
-  package { 'p7zip':
-    ensure => installed,
-  }
-
-  package { 'bluez-utils':
-    ensure => installed,
-  }
-
   file { 'install bluetooth firmware script':
     source  => "puppet:///modules/data/xps13/XPS13-BLUETOOTH-FIRMWARE.sh",
     mode    => '0700',
@@ -21,5 +13,6 @@ class profile::xps13bluetooth (
   exec { 'run xps13 firmware installation script':
     command => "$script_path $windows_driver_url",
     creates => $firmware_path,
+    require => Package['p7zip']
   }
 }

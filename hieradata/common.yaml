@@ -48,8 +48,6 @@ profile::desktop::desktop_packages:
     - ansible
     - aria2
     - bind-tools
-    - bluez
-    - bluez-utils
     - boost
     - ccache
     - chromium
@@ -90,6 +88,7 @@ profile::desktop::desktop_packages:
     - networkmanager-vpnc
     - nmap
     - openssh
+    - p7zip
     - pavucontrol
     - pkgfile
     - puppet

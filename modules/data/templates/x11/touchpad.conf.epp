@@ -1,0 +1,12 @@
+Section "InputClass"
+    Identifier "touchpad"
+    Driver "libinput"
+    Option "Tapping" "<%= $tap_to_click %>"
+    Option "ClickMethod" "<%= $click_method %>"
+    Option "NaturalScrolling" "<%= $natural_scrolling %>"
+    Option "ScrollMethod" "<%= $scroll_method %>"
+    Option "HorizontalScrolling" "<%= $horizontal_scrolling %>"
+    Option "DisableWhileTyping" "<%= $disable_while_typing %>"
+    Option "AccelProfile" "<%= $acceleration_profile %>"
+    Option "AccelSpeed" "<%= $acceleration_speed %>"
+EndSection
