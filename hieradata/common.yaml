@@ -48,6 +48,8 @@ profile::desktop::desktop_packages:
     - ansible
     - aria2
     - bind-tools
+    - bluez
+    - bluez-utils
     - boost
     - ccache
     - chromium
