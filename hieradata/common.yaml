@@ -62,6 +62,7 @@ profile::desktop::desktop_packages:
     - evince
     - f2fs-tools
     - feh
+    - file-roller
     - firefox
     - freemind
     - gimp
