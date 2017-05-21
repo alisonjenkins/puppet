@@ -98,6 +98,7 @@ profile::desktop::desktop_packages:
     - python-pip
     - python2-pip
     - sshuttle
+    - sysstat
     - termite
     - the_silver_searcher
     - tig
