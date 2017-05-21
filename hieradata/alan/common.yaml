@@ -8,8 +8,9 @@ profile::base::user_accounts:
         ensure: present
         uid: 1000
         groups:
-            - wheel
             - docker
+            - sys
+            - wheel
         comment: Alan Jenkins
         managehome: true
         ssh_keys:

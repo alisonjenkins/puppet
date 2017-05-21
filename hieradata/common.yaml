@@ -44,6 +44,7 @@ profile::desktop::desktop_aur_packages:
     - zathura-epub-git
 
 profile::desktop::desktop_packages:
+    - acpi
     - alsa-utils
     - ansible
     - aria2

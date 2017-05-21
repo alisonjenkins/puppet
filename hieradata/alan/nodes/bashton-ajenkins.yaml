@@ -9,3 +9,4 @@ classes:
     - profile::libvirt_kvm
     - profile::monitor_hotplug
     - profile::networkmanager
+    - profile::cups
