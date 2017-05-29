@@ -10,3 +10,4 @@ classes:
     - profile::monitor_hotplug
     - profile::networkmanager
     - profile::cups
+    - profile::lowbat_suspend

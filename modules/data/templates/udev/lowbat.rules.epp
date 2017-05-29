@@ -1,0 +1,2 @@
+# Suspend the system when battery level drops to <%= $profile::lowbat_suspend::low_percentage %>% or lower
+SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="[0-<%= $profile::lowbat_suspend::low_percentage %>]", RUN+="<%= $profile::lowbat_suspend::command %>"
