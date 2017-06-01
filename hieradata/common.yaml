@@ -97,6 +97,7 @@ profile::desktop::desktop_packages:
     - pwgen
     - python-pip
     - python2-pip
+    - qt4
     - sshuttle
     - sysstat
     - termite
