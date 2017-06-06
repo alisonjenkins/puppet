@@ -1,5 +1,6 @@
 class profile::monitor_hotplug
 (
+  $ensure = 'present',
   $user,
   $int_display_name = 'eDP-1',
   $ext_display_name = 'DP-1',

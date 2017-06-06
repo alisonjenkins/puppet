@@ -1,6 +1,6 @@
 #!/bin/sh
 lock() {
-    xscreensaver-command --lock
+    xscreensaver-command --lock && keepass --lock-all && ssh-add -D
 }
 
 case "$1" in
