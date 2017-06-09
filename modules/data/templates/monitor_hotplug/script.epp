@@ -1,5 +1,6 @@
 #!/bin/bash
-
+set -euo pipefail
+IFS=$'\n\t'
 ######################################
 ## /usr/local/bin/hotplug_monitor.sh
 ######################################
@@ -7,6 +8,7 @@ X_USER=<%= $profile::monitor_hotplug::user %>
 export DISPLAY=:0
 export XAUTHORITY=/home/$X_USER/.Xauthority
 export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id <%= $profile::monitor_hotplug::user %> -u)/bus
+EXT_MONITOR=
 
 function connect()
 {
