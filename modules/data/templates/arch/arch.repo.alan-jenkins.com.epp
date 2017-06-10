@@ -1,0 +1,3 @@
+[arch.repo.alan-jenkins.com]
+SigLevel = Optional TrustedOnly
+Server = http://arch.repo.alan-jenkins.com/$arch

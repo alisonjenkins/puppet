@@ -22,9 +22,10 @@ class profile::base (
         refreshonly => true,
     } # }}}
     # {{{ Add my custom Arch repository
-    file { '/etc/pacman.conf':
+    file { 'add custom arch repo':
         ensure  => file,
-        content => template('data/arch/pacman.conf.epp'),
+        path    => '/etc/pacman.d/arch.repo.alan-jenkins.com.conf',
+        content => epp('data/arch/arch.repo.alan-jenkins.com.epp'),
         notify  => Exec['pacman-Sy'],
     } # }}}
     # {{{ Install packages that should be on all machines.
