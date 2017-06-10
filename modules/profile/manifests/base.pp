@@ -9,7 +9,6 @@ class profile::base (
       'ncdu',
       'ranger',
       'rsync',
-      'ruby-augeas',
       'tmux'
   ],
   $user_accounts = {},
