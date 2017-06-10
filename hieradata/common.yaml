@@ -56,7 +56,6 @@ profile::desktop::desktop_packages:
     - cmus
     - compton
     - cups
-    - docker
     - docker-compose
     - dos2unix
     - electricsheep
