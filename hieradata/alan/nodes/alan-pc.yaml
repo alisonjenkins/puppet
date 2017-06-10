@@ -1,3 +1,10 @@
 ---
 classes:
     - "profile::desktop"
+    - "profile::arch_tweaks"
+    - "profile::bluetooth"
+    - "profile::cups"
+    - "profile::i3_desktop"
+    - "profile::keyboard_numlock"
+    - "profile::libvirt_kvm"
+    - "profile::networkmanager"
