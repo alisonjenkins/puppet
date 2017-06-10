@@ -17,6 +17,4 @@ define aurpkg (
     ],
     user        => $user,
   }
-
-
 }
