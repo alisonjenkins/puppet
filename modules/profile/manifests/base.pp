@@ -4,6 +4,7 @@ class profile::base (
   $base_packages = [
       'augeas',
       'aws-cli',
+      'docker',
       'htop',
       'moreutils',
       'ncdu',
