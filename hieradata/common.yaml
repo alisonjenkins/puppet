@@ -28,6 +28,7 @@ profile::desktop::desktop_aur_packages:
     - fpm
     - google-chrome
     - keybase-bin
+    - light
     - nerd-fonts-complete
     - packer-io-git
     - potato
