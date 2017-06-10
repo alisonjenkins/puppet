@@ -28,7 +28,6 @@ profile::desktop::desktop_aur_packages:
     - fpm
     - google-chrome
     - keybase-bin
-    - light
     - nerd-fonts-complete
     - packer-io-git
     - potato
@@ -114,6 +113,7 @@ profile::desktop::desktop_packages:
     - xdot
     - xdotool
     - xorg-server
+    - xorg-xbacklight
     - xorg-xdpyinfo
     - xorg-xkill
     - xorg-xmodmap
