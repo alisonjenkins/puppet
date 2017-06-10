@@ -9,12 +9,12 @@ define aurpkg (
     ensure => latest,
   }
 
-  exec { "/usr/bin/cower --d -d $title":
-    cwd         => "/home/$user",
-    provider    => shell,
-    environment => [
-      'HOME=/home/alan',
-    ],
-    user        => $user,
-  }
+  # exec { "/usr/bin/cower --d -d $title":
+  #   cwd         => "/home/$user",
+  #   provider    => shell,
+  #   environment => [
+  #     'HOME=/home/alan',
+  #   ],
+  #   user        => $user,
+  # }
 }
