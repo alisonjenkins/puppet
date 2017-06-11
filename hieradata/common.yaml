@@ -80,6 +80,7 @@ profile::desktop::desktop_packages:
     - libsecret
     - lightdm
     - lightdm-gtk-greeter
+    - lshw
     - lxsession
     - maim
     - mpv
