@@ -12,70 +12,70 @@ EXT_MONITOR=
 
 function connect()
 {
-    CONFIG_PATH="/home/<%= $profile::monitor_hotplug::user %>/.config/monitor_hotplug/config"
-    if [ -e "${CONFIG_PATH}" ];
-    then
-	source "${CONFIG_PATH}"
-    else
-	echo "No config file found at ${CONFIG_PATH}"
-	echo "Exiting monitor hotplug as not configured"
-	return 1
-    fi
+  CONFIG_PATH="/home/<%= $profile::monitor_hotplug::user %>/.config/monitor_hotplug/config"
+  if [ -e "${CONFIG_PATH}" ];
+  then
+    source "${CONFIG_PATH}"
+  else
+    echo "No config file found at ${CONFIG_PATH}"
+    echo "Exiting monitor hotplug as not configured"
+    return 1
+  fi
 
-    # identify monitor
-    EDID_MD5=$(md5sum <%= $profile::monitor_hotplug::ext_display_drm_path -%>/edid | cut -f1 -d' ')
-    LOCATION=${locations[${EDID_MD5}:location]}
-    INT_RES=${locations[${EDID_MD5}:internal_res]}
-    EXT_POS=${locations[${EDID_MD5}:external_pos]}
-    EXT_RES=${locations[${EDID_MD5}:external_res]}
-    I3MWCMD=${locations[${EDID_MD5}:i3_move_workspace_command]}
+  # identify monitor
+  EDID_MD5=$(md5sum <%= $profile::monitor_hotplug::ext_display_drm_path -%>/edid | cut -f1 -d' ')
+  LOCATION=${locations[${EDID_MD5}:location]}
+  INT_RES=${locations[${EDID_MD5}:internal_res]}
+  EXT_POS=${locations[${EDID_MD5}:external_pos]}
+  EXT_RES=${locations[${EDID_MD5}:external_res]}
+  I3MWCMD=${locations[${EDID_MD5}:i3_move_workspace_command]}
 
-    ## location name
-    {
-	echo "Detected location: ${LOCATION}"
-	echo "Internal Resolution: ${INT_RES}"
-	echo "External Postion: ${EXT_POS}"
-	echo "External Resolution: ${EXT_RES}"
-    } >> /tmp/monitor_hotplug.log
-    ## position of monitor relative to laptop
-    ## resolution
-    xrandr_cmd="xrandr --output <%= $profile::monitor_hotplug::int_display_name %>"
+  ## location name
+  {
+    echo "Detected location: ${LOCATION}"
+    echo "Internal Resolution: ${INT_RES}"
+    echo "External Postion: ${EXT_POS}"
+    echo "External Resolution: ${EXT_RES}"
+  } >> /tmp/monitor_hotplug.log
+  ## position of monitor relative to laptop
+  ## resolution
+  xrandr_cmd="xrandr --output <%= $profile::monitor_hotplug::int_display_name %>"
 
-    ## set internal resolution
-    xrandr_cmd="$xrandr_cmd --mode ${INT_RES}"
+  ## set internal resolution
+  xrandr_cmd="$xrandr_cmd --mode ${INT_RES}"
 
-    ## external output
-    xrandr_cmd="$xrandr_cmd --output <%= $profile::monitor_hotplug::ext_display_name %>"
+  ## external output
+  xrandr_cmd="$xrandr_cmd --output <%= $profile::monitor_hotplug::ext_display_name %>"
 
-    ## position of external monitor
-    if [ "${EXT_POS}" == "right" ]; then
-	xrandr_cmd="$xrandr_cmd --right-of <%= $profile::monitor_hotplug::int_display_name %>"
-    elif [ "${EXT_POS}" == "left" ]; then
-	xrandr_cmd="$xrandr_cmd --left-of <%= $profile::monitor_hotplug::int_display_name %>"
-    fi
+  ## position of external monitor
+  if [ "${EXT_POS}" == "right" ]; then
+    xrandr_cmd="$xrandr_cmd --right-of <%= $profile::monitor_hotplug::int_display_name %>"
+  elif [ "${EXT_POS}" == "left" ]; then
+    xrandr_cmd="$xrandr_cmd --left-of <%= $profile::monitor_hotplug::int_display_name %>"
+  fi
 
-    ## external resolution
-    xrandr_cmd="$xrandr_cmd --mode ${EXT_RES}"
+  ## external resolution
+  xrandr_cmd="$xrandr_cmd --mode ${EXT_RES}"
 
-    echo "Monitor MD5: ${EDID_MD5}" >> /tmp/monitor_hotplug.log
-    echo "Running command: ${xrandr_cmd}" >> /tmp/monitor_hotplug.log
-    eval "$xrandr_cmd"
+  echo "Monitor MD5: ${EDID_MD5}" >> /tmp/monitor_hotplug.log
+  echo "Running command: ${xrandr_cmd}" >> /tmp/monitor_hotplug.log
+  eval $xrandr_cmd
 
-    # Move i3 workspaces.
-    if [ -n "${I3MWCMD}" ];
-    then
-	eval "$I3MWCMD"
-    fi
+  # Move i3 workspaces.
+  if [ -n "${I3MWCMD}" ];
+  then
+    eval $I3MWCMD
+  fi
 }
 
 function disconnect(){
-    xrandr --output <%= $profile::monitor_hotplug::ext_display_name %> --off
+  xrandr --output <%= $profile::monitor_hotplug::ext_display_name %> --off
 }
 
 if [ "$(cat <%= $profile::monitor_hotplug::ext_display_drm_path -%>/status)" == "connected" ] ; then
-    connect
+  connect
 elif [ "$(cat <%= $profile::monitor_hotplug::ext_display_drm_path -%>/status)" == "disconnected" ] ; then
-    disconnect
+  disconnect
 else
-    exit
+  exit
 fi
