@@ -120,6 +120,7 @@ profile::desktop::desktop_packages:
     - xorg-xdpyinfo
     - xorg-xkill
     - xorg-xmodmap
+    - xorg-xprop
     - xorg-xrandr
     - xorg-xrdb
     - xsane
