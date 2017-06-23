@@ -41,6 +41,7 @@ profile::desktop::desktop_aur_packages:
     - ttf-google-fonts-git
     - unclutter-xfixes-git
     - xboomx-snilius
+    - xorg-xprop
     - xss-lock-git
     - yamllint
     - youtube-dl-git
