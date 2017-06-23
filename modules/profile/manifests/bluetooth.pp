@@ -30,4 +30,19 @@ class profile::bluetooth(
     line   => 'load-module module-switch-on-connect',
     path   => '/etc/pulse/default.pa',
   }
+
+  file_line { 'enable uinput module on boot':
+    ensure => present,
+    line   => 'uinput',
+    path   => '/etc/modules-load.d/uinput.conf',
+    notify => [
+      Exec['load uinput'],
+    ]
+  }
+
+  exec { 'load uinput':
+    command     => '/usr/bin/modprobe uinput',
+    notify      => Service['bluetooth'],
+    refreshonly => true,
+  }
 }
