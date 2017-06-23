@@ -32,6 +32,7 @@ profile::desktop::desktop_aur_packages:
     - keybase-bin
     - light
     - nerd-fonts-complete
+    - nodejs-jsonlint
     - packer-io-git
     - potato
     - remmina-plugin-rdesktop
