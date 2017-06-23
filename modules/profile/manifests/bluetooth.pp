@@ -31,11 +31,11 @@ class profile::bluetooth(
     path   => '/etc/pulse/default.pa',
   }
 
-  file_line { 'enable uinput module on boot':
-    ensure => present,
-    line   => 'uinput',
-    path   => '/etc/modules-load.d/uinput.conf',
-    notify => [
+  file { 'enable uinput module on boot':
+    ensure  => file,
+    content => 'uinput',
+    path    => '/etc/modules-load.d/uinput.conf',
+    notify  => [
       Exec['load uinput'],
     ]
   }
