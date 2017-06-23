@@ -34,6 +34,7 @@ profile::desktop::desktop_aur_packages:
     - nerd-fonts-complete
     - nodejs-jsonlint
     - packer-io-git
+    - perl-email-outlook-message
     - potato
     - remmina-plugin-rdesktop
     - slack-rdesktop
