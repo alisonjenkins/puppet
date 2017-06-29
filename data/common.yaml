@@ -23,6 +23,7 @@ profile::desktop::desktop_aur_packages:
     - asciinema
     - awless
     - calise-git
+    - createrepo
     - csslint
     - debian-whois-mkpasswd
     - fortune-mod-vimtips
