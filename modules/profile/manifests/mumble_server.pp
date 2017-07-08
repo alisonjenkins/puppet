@@ -1,9 +1,10 @@
 class profile::mumble_server (
-  $package = 'umurmur'
+  $package = 'murmur',
+  $service = 'murmur'
 ) {
   ensure_packages($package, {'ensure' => 'latest'})
 
-  service { 'umurmur':
+  service { 'murmur':
     ensure    => running,
     enable    => true,
     hasstatus => true,
