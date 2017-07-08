@@ -4,9 +4,18 @@ class profile::mumble_server (
 ) {
   ensure_packages($package, {'ensure' => 'latest'})
 
-  service { 'murmur':
+  service { $service:
     ensure    => running,
     enable    => true,
     hasstatus => true,
+    require   => Packages[$package]
+  }
+
+  file { 'mumble database paths':
+    ensure  => directory,
+    owner   => 'murmur',
+    group   => 'murmur',
+    path    => '/var/lib/murmur',
+    require => Service[$service],
   }
 }
