@@ -8,7 +8,7 @@ class profile::mumble_server (
     ensure    => running,
     enable    => true,
     hasstatus => true,
-    require   => Packages[$package]
+    require   => Package[$package]
   }
 
   file { 'mumble database paths':
