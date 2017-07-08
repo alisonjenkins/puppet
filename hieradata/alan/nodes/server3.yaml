@@ -4,7 +4,7 @@ classes:
     # - "profile::nginx_pagespeed"
     # - "profile::mysql_server"
 
-profile::mumble_server::config: >
+profile::mumble_server::config: |
     # vi:ft=cfg
     # Murmur configuration file.
     #
