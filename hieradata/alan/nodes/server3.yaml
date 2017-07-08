@@ -1,6 +1,5 @@
 ---
 classes:
-    - "profile::gogs_server"
+    - "profile::mumble_server"
     # - "profile::nginx_pagespeed"
-    # - "profile::mumble_server"
     # - "profile::mysql_server"
