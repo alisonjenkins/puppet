@@ -27,5 +27,7 @@ class profile::mumble_server (
     group   => 'murmur',
     content => $config,
     mode    => '0640',
+    notify  => Service[$service],
+    require => Package[$package],
   }
 }
