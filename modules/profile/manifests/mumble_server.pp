@@ -1,6 +1,7 @@
 class profile::mumble_server (
-  $package = 'murmur',
-  $service = 'murmur'
+  String $config,
+  String $package = 'murmur',
+  String $service = 'murmur',
 ) {
   ensure_packages($package, {'ensure' => 'latest'})
 
@@ -17,5 +18,14 @@ class profile::mumble_server (
     group   => 'murmur',
     path    => '/var/lib/murmur',
     require => Service[$service],
+  }
+
+  file { 'murmur config':
+    ensure  => file,
+    path    => '/etc/murmur.ini',
+    owner   => 'murmur',
+    group   => 'murmur',
+    content => $config,
+    mode    => '0640',
   }
 }
