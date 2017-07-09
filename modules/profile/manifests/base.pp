@@ -10,6 +10,7 @@ class profile::base (
       'htop',
       'moreutils',
       'ncdu',
+      'pkgfile',
       'ranger',
       'rsync',
       'tmux',
