@@ -26,6 +26,7 @@ mod 'puppetlabs-vcsrepo', '1.5.0'
 mod 'puppetlabs/concat'
 mod 'puppetlabs/stdlib'
 mod 'saz-locales', '2.3.0'
+mod 'themeier-systemd_cron', '0.1.4'
 
 # Git modules
 mod 'bashtoni-timezone',
