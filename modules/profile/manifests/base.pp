@@ -37,8 +37,9 @@ class profile::base (
     # }}}
     # {{{ Initialise pkgfile
     exec {'initialise pkgfile':
-      command => 'pkgfile -u',
-      unless  => 'test -f /var/cache/pkgfile',
+      command => '/usr/bin/pkgfile -u',
+      unless  => '/usr/bin/test -f /var/cache/pkgfile',
+      require => Package['pkgfile']
     }
     # }}}
     # {{{ Sort out timesync and timezones
