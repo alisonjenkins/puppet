@@ -19,7 +19,7 @@ class profile::cjwdesign (
     '/etc/nginx/sites-enabled',
   ]
 
-  ensure_resources('file', $nginx_dirs, {
+  ensure_resource('file', $nginx_dirs, {
     'ensure' => 'directory',
   })
 
