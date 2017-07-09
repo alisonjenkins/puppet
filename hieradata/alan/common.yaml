@@ -6,7 +6,6 @@ profile::monitor_hotplug::user: alan
 profile::base::user_accounts:
     alan:
         ensure: present
-        uid: 1000
         groups:
             - docker
             - sys
