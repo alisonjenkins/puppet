@@ -2,7 +2,6 @@ class profile::cjwdesign (
 ) {
   require profile::php56
   require profile::nginx
-  require profile::mysql
 
   file {'cjwdesign nginx config':
     ensure  => file,
