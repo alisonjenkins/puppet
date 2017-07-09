@@ -38,7 +38,7 @@ class profile::base (
     # {{{ Initialise pkgfile
     exec {'initialise pkgfile':
       command => '/usr/bin/pkgfile -u',
-      unless  => '/usr/bin/test -f /var/cache/pkgfile',
+      unless  => '/usr/bin/test -f /var/cache/pkgfile/core.files',
       require => Package['pkgfile']
     }
     # }}}
