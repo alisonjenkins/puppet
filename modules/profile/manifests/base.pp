@@ -85,14 +85,14 @@ class profile::base (
       users => $user_accounts
     }
     # }}}
-  # {{{ Cronjobs
-  cron {'pkgfile update':
-    ensure  => present,
-    command => '/usr/bin/pkgfile -u',
-    user    => 'root',
-    hour    => '15',
-    minute  => '0',
-    require => Package['pkgfile'],
+  # {{{ systemd timers
+  systemd_cron {'pkgfile update':
+    ensure              => present,
+    on_calendar         => '*:15',
+    service_description => 'Update pkgfile',
+    timer_description   => 'Update pkgfile daily at 1500',
+    command             => '/usr/bin/pkgfile -u',
+    require             => Package['pkgfile'],
   }
   # }}}
   }
