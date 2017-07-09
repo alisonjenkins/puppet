@@ -3,8 +3,6 @@ class profile::cjwdesign (
     'nginx'
   ],
 ) {
-  import 'docker'
-
   ensure_packages($packages, {
     'ensure' => 'present'
   })
