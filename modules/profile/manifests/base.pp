@@ -35,7 +35,13 @@ class profile::base (
     # {{{ Install packages that should be on all machines.
     ensure_packages($base_packages, { 'ensure' => 'present' })
     # }}}
-# {{{ Sort out timesync and timezones
+    # {{{ Initialise pkgfile
+    exec {'initialise pkgfile':
+      command => 'pkgfile -u',
+      unless  => 'test -f /var/cache/pkgfile',
+    }
+    # }}}
+    # {{{ Sort out timesync and timezones
     class { 'timezone': }
 
     file_line { 'NTP config':
@@ -54,7 +60,7 @@ class profile::base (
       command => "/usr/bin/timedatectl set-ntp true",
       unless  => '/usr/bin/timedatectl status | /usr/bin/grep \'NTP synchronized: yes\''
     }# }}}
-  # {{{ sudo configuration
+    # {{{ sudo configuration
     file { '/etc/sudoers.d/wheel':
       ensure => file,
       owner  => 'root',
