@@ -10,7 +10,6 @@ class profile::cjwdesign (
     owner   => 'root',
     group   => 'root',
     mode    => '0664',
-    require => File['/etc/nginx/sites-available'],
     notify  => Service['nginx'],
   }
 
@@ -20,7 +19,6 @@ class profile::cjwdesign (
     source  => '/etc/nginx/sites-available/cjwdesign.net.conf',
     require => [
       File['cjwdesign nginx config'],
-      File['/etc/nginx/sites-enabled'],
     ],
     notify  => Service['nginx'],
   }
