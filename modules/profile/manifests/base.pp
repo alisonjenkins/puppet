@@ -90,8 +90,8 @@ class profile::base (
     ensure  => present,
     command => '/usr/bin/pkgfile -u',
     user    => 'root',
-    hour    => '0',
-    minute  => '15',
+    hour    => '15',
+    minute  => '0',
     require => Package['pkgfile'],
   }
   # }}}
