@@ -10,7 +10,8 @@ class profile::base (
       'ncdu',
       'ranger',
       'rsync',
-      'tmux'
+      'tmux',
+      'vim'
   ],
   $user_accounts = {},
 )
@@ -29,9 +30,8 @@ class profile::base (
         notify  => Exec['pacman-Sy'],
     } # }}}
     # {{{ Install packages that should be on all machines.
-    package {$base_packages:
-      ensure => present,
-    } # }}}
+    ensure_packages($base_packages, { 'ensure' => 'present' })
+    # }}}
 # {{{ Sort out timesync and timezones
     class { 'timezone': }
 
