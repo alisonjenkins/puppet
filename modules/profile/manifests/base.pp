@@ -64,6 +64,11 @@ class profile::base (
       path   => '/etc/sudoers.d/wheel',
     }
 
+    file_line { 'keep ssh_auth_sock':
+      ensure => present,
+      path   => '/etc/sudoers',
+      line   => 'Defaults env_keep+=SSH_AUTH_SOCK'
+    }
     # }}}
     # {{{ User creation
     account {'users':
