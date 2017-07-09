@@ -1,5 +1,8 @@
 class profile::cjwdesign (
 ) {
+  require profile::php56
+  require profile::nginx
+
   file {'cjwdesign nginx config':
     ensure  => file,
     path    => '/etc/nginx/sites-available/cjwdesign.net.conf',
