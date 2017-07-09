@@ -48,7 +48,7 @@ class profile::cjwdesign (
   docker::run { 'php56':
     image            => 'php:5.6-fpm-alpine',
     ports            => [
-      '9001:9001',
+      '9000:9001',
     ],
     expose           => [
       '9000'
