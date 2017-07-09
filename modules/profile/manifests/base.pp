@@ -5,6 +5,7 @@ class profile::base (
       'augeas',
       'aws-cli',
       'docker',
+      'git',
       'htop',
       'moreutils',
       'ncdu',
