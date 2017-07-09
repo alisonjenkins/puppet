@@ -1,7 +1,6 @@
 class profile::cjwdesign (
   $packages = [
-    'nginx',
-    'docker'
+    'nginx'
   ],
 ) {
   import 'docker'
@@ -47,12 +46,16 @@ class profile::cjwdesign (
   }
 
   docker::run { 'php56':
-    image  => 'php:5.6-fpm-alpine',
-    ports  => [
+    image            => 'php:5.6-fpm-alpine',
+    ports            => [
       '9001:9001',
     ],
-    expose => [
+    expose           => [
       '9000'
-    ]
+    ],
+    restart_service  => true,
+    dns              => ['8.8.8.8', '8.8.4.4'],
+    pull_on_start    => true,
+    extra_parameters => ['--restart=always'],
   }
 }
