@@ -27,6 +27,7 @@ profile::desktop::desktop_aur_packages:
     - debian-whois-mkpasswd
     - fortune-mod-vimtips
     - fpm
+    - gephi
     - google-chrome
     - keybase-bin
     - light
