@@ -1,27 +1,8 @@
 class profile::cjwdesign (
-  $packages = [
-    'nginx'
-  ],
 ) {
-  ensure_packages($packages, {
-    'ensure' => 'present'
-  })
-
-  ensure_resource('service', 'nginx', {
-    'ensure'  => 'running',
-    'enable'  => true,
-    'require' => Package['nginx'],
-  })
-
-  $nginx_dirs = [
-    '/etc/nginx',
-    '/etc/nginx/sites-available',
-    '/etc/nginx/sites-enabled',
-  ]
-
-  ensure_resource('file', $nginx_dirs, {
-    'ensure' => 'directory',
-  })
+  require profile::php56
+  require profile::nginx
+  require profile::mysql
 
   file {'cjwdesign nginx config':
     ensure  => file,
@@ -45,17 +26,11 @@ class profile::cjwdesign (
     notify  => Service['nginx'],
   }
 
-  docker::run { 'php56':
-    image            => 'php:5.6-fpm-alpine',
-    ports            => [
-      '9000:9001',
-    ],
-    expose           => [
-      '9000'
-    ],
-    restart_service  => true,
-    dns              => ['8.8.8.8', '8.8.4.4'],
-    pull_on_start    => true,
-    extra_parameters => ['--restart=always'],
+  file { 'cjwdesign site directory':
+    ensure => directory,
+    path   => '/srv/http/cjwdesign.net',
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0775',
   }
 }
