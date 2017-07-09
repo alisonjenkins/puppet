@@ -86,7 +86,7 @@ class profile::base (
     }
     # }}}
   # {{{ systemd timers
-  systemd_cron {'pkgfile update':
+  systemd_cron {'pkgfile_update':
     ensure              => present,
     on_calendar         => '*:15',
     service_description => 'Update pkgfile',
