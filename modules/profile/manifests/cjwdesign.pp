@@ -1,7 +1,7 @@
 class profile::cjwdesign (
 ) {
   require profile::php56
-  include profile::nginx
+  require profile::nginx
 
   file {'cjwdesign nginx config':
     ensure  => file,

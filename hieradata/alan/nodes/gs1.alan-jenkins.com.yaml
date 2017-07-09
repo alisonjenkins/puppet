@@ -2,9 +2,15 @@
 classes:
     - docker::images
     - profile::minecraft
+    - profile::sevendaystodie
 
 docker::images::images:
     demon012/minecraft-direwolf20:
         image_tag: 'latest'
     demon012/minecraft-skyfactory3:
         image_tag: 'latest'
+
+profile::sevendaystodie::server_telnet_port: 12345
+profile::sevendaystodie::server_telnet_password: password
+profile::sevendaystodie::server_auto_update: 1
+profile::sevendaystodie::world_path: /srv/7dtd/world
