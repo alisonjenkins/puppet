@@ -85,6 +85,16 @@ class profile::base (
       users => $user_accounts
     }
     # }}}
+  # {{{ Cronjobs
+  cron {'pkgfile update':
+    ensure  => present,
+    command => '/usr/bin/pkgfile -u',
+    user    => 'root',
+    hour    => '0',
+    minute  => '15',
+    require => Package['pkgfile'],
+  }
+  # }}}
   }
   elsif $facts['os']['family'] == 'windows' {# {{{
     include stdlib
