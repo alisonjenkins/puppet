@@ -1,0 +1,98 @@
+server {
+    listen       80;
+    server_name  cjwdesign.net;
+    return       301 http://www.cjwdesign.net$request_uri;
+}
+server {
+    server_name www.cjwdesign.net;
+    root /srv/http/cjwdesign.net;
+
+    index index.html index.htm index.php;
+
+    access_log /var/log/nginx/cjwdesign.net-drupal.access.log;
+    error_log /var/log/nginx/cjwdesign.net-drupal.error.log;
+
+    location = /favicon.ico {
+            log_not_found off;
+            access_log off;
+    }
+
+    location = /robots.txt {
+            allow all;
+            log_not_found off;
+            access_log off;
+    }
+
+    # For drush
+    location = /backup {
+            deny all;
+    }
+
+    # Prevent user from accessing settings.php directly
+    location ~ ^/sites/[^/]+/settings.php$ {
+            deny all;
+    }
+
+    ## Replicate the Apache <FilesMatch> directive of Drupal standard
+    ## .htaccess. Disable access to any code files. Return a 404 to curtail
+    ## information disclosure. Hide also the text files.
+    location ~* ^(?:.+\.(?:htaccess|make|txt|log|engine|inc|info|install|module|profile|po|sh|.*sql|theme|tpl(?:\.php)?|xtmpl)|code-style\.pl|/Entries.*|/Repository|/Root|/Tag|/Template)$ {
+            return 404;
+    }
+
+    location ~ \..*/.*\.php$ {
+            return 403;
+    }
+
+    location / {
+            # This is cool because no php is touched for static content
+            try_files $uri @rewrite;
+    }
+
+    location @rewrite {
+            # Some modules enforce no slash (/) at the end of the URL
+            # Else this rewrite block wouldn't be needed (GlobalRedirect)
+            #rewrite ^/(.*)$ /index.php?q=$1&$args;
+            rewrite ^ /index.php last;
+    }
+
+    # Use an SSH tunnel to access those pages. They shouldn't be visible to
+    # external peeping eyes.
+    location = /install.php {
+            allow 127.0.0.1;
+            deny all;
+    }
+
+    location = /update.php {
+            allow 127.0.0.1;
+            deny all;
+    }
+
+    location ~ \.php$ {
+            fastcgi_split_path_info ^(.+\.php)(/.+)$;
+            #NOTE: You should have "cgi.fix_pathinfo = 0;" in php.ini
+            include fastcgi_params;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            fastcgi_intercept_errors on;
+            fastcgi_pass   127.0.0.1:9000;
+    }
+
+    ## Drupal 7 generated image handling, i.e., imagecache in core. See:
+    ## https://drupal.org/node/371374
+    location ~* /sites/.*/files/styles/ {
+            access_log off;
+            expires 30d;
+            try_files $uri @rewrite;
+    }
+
+    # Fighting with ImageCache? This little gem is amazing.
+    location ~ ^/sites/.*/files/imagecache/ {
+            try_files $uri @rewrite;
+    }
+
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+            expires max;
+            log_not_found off;
+    }
+}
+
