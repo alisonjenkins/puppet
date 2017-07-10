@@ -11,7 +11,7 @@ class profile::cjwdesign (
     group   => 'root',
     mode    => '0664',
     notify  => Service['nginx'],
-    after   => Service['nginx'],
+    require => Service['nginx'],
   }
 
   # file {'enable cjwdesign nginx config':
