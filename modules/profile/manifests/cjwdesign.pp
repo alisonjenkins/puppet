@@ -3,19 +3,19 @@ class profile::cjwdesign (
   require profile::php56
   require profile::nginx
 
-  # file {'cjwdesign nginx config':
-  #   ensure  => file,
-  #   path    => '/etc/nginx/sites-available/cjwdesign.net.conf',
-  #   content => epp('data/cjwdesign.net/nginx.conf.epp'),
-  #   owner   => 'root',
-  #   group   => 'root',
-  #   mode    => '0664',
-  #   notify  => Service['nginx'],
-  #   require => [
-  #     Service['nginx'],
-  #     File['/etc/nginx/sites-available'],
-  #   ]
-  # }
+  file {'cjwdesign nginx config':
+    ensure  => file,
+    path    => '/etc/nginx/sites-available/cjwdesign.net.conf',
+    content => epp('data/cjwdesign.net/nginx.conf.epp'),
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0664',
+    notify  => Service['nginx'],
+    require => [
+      Service['nginx'],
+      File['/etc/nginx/sites-available'],
+    ]
+  }
 
   # file {'enable cjwdesign nginx config':
   #   ensure  => link,
