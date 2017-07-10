@@ -10,6 +10,8 @@ class profile::cjwdesign (
     owner   => 'root',
     group   => 'root',
     mode    => '0664',
+    notify  => Service['nginx'],
+    after   => Service['nginx'],
   }
 
   # file {'enable cjwdesign nginx config':
