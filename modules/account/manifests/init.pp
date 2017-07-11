@@ -249,7 +249,7 @@ define account (
     }
     # }}}
     # {{{ Create user
-    user {$user_name:
+    ensure_resource('user', $user_name, {
       ensure               => $ensure,
       allowdupe            => $user_allowdupe,
       attribute_membership => $user_attribute_membership,
@@ -284,7 +284,7 @@ define account (
       system               => $user_system,
       uid                  => $user_uid,
       require              => Group[$group]
-    }
+    })
     # }}}
     # {{{ Create home code
     if $user_managehome {
