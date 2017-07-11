@@ -10,7 +10,7 @@ class profile::sevendaystodie (
       '26900:26900'
     ],
     expose  => [
-      '26900:26900',
+      '26900',
     ],
     env     => [
       "SEVEN_DAYS_TO_DIE_TELNET_PORT=${server_telnet_port}",
