@@ -1,7 +1,7 @@
 class profile::sevendaystodie (
-  String $server_telnet_port,
+  Integer $server_telnet_port,
   String $server_telnet_password,
-  String $server_auto_update,
+  Integer $server_auto_update,
   String $world_path,
 ) {
   docker::run {'7dtd':
