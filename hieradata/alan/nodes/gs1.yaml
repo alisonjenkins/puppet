@@ -61,7 +61,7 @@ profile::sevendaystodie::server_config: |
       <property name="DropOnQuit"                           value="0" />                     <!-- 0 = nothing, 1 = everything, 2 = toolbelt only, 3 = backpack only -->
 
       <property name="BloodMoonEnemyCount"                  value="8" />                     <!-- The number of zombies spawned during blood moons per player. -->
-      <property name="EnemySpawnMode"                       value="3" />                     <!-- 0 = Disabled 0%, 1 = Very Low 50%, 2 = Low 75%, 3 = Medium 100%, 4 = High 125%, 5 = Very High 150% -->
+      <property name="EnemySpawnMode"                       value="true" />                     <!-- 0 = Disabled 0%, 1 = Very Low 50%, 2 = Low 75%, 3 = Medium 100%, 4 = High 125%, 5 = Very High 150% -->
       <property name="EnemyDifficulty"                      value="0" />                     <!-- 0 = Normal, 1 = Feral -->
 
       <property name="BlockDurabilityModifier"              value="100" />                   <!-- percentage in whole numbers -->
