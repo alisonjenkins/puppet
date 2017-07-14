@@ -11,7 +11,9 @@ class profile::sevendaystodie (
     path    => "${world_path}/server_data/serverconfig.xml",
     content => $server_config,
     mode    => '0664',
+    notify  => Docker::Run['7dtd'],
   }
+
   docker::run {'7dtd':
     image   => 'didstopia/7dtd-server',
     ports   => [
