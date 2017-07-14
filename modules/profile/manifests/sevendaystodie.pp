@@ -4,7 +4,14 @@ class profile::sevendaystodie (
   Integer $server_auto_update,
   String $server_update_branch,
   String $world_path,
+  String $server_config,
 ) {
+
+  file { 'create 7dtd config file':
+    path    => "${world_path}/server_data/serverconfig.xml",
+    content => $server_config,
+    mode    => '0664',
+  }
   docker::run {'7dtd':
     image   => 'didstopia/7dtd-server',
     ports   => [
