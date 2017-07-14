@@ -88,6 +88,7 @@ profile::sevendaystodie::server_config: |
       <property name="EACEnabled"                           value="true"/>                  <!-- Enables/Disables EasyAntiCheat -->
       <property name="HideCommandExecutionLog"              value="0"/>                     <!-- Hide logging of command execution. 0 = show everything, 1 = hide only from Telnet/ControlPanel, 2 = also hide from remote game clients, 3 = hide everything -->
       <property name="MaxUncoveredMapChunksPerPlayer"       value="131072"/>                <!-- Override how many chunks can be uncovered on the ingame map by each player. Resulting max map file size limit per player is (x * 512 Bytes), uncovered area is (x * 256 m²). Default 131072 means max 32 km² can be uncovered at any time -->
-      <property name="BedrollDeadZoneSize"                  value="15"/>                    <!-- Size of bedroll deadzone, no zombies will spawn inside this area, and any cleared sleeper volumes that touch a bedroll deadzone will not spawn af[root@gs1 world]# cat serverconfig.xml
+      <property name="BedrollDeadZoneSize"                  value="15"/>                    <!-- Size of bedroll deadzone, no zombies will spawn inside this area, and any cleared sleeper volumes that touch a bedroll deadzone will not spawn af -->
 
       <property name="SaveGameFolder"                       value="server_data/world" />    <!-- use this to override the default save game path -->
+    </ServerSettings>
