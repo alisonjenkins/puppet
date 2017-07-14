@@ -2,6 +2,7 @@ class profile::sevendaystodie (
   Integer $server_telnet_port,
   String $server_telnet_password,
   Integer $server_auto_update,
+  String $server_update_branch,
   String $world_path,
 ) {
   docker::run {'7dtd':
@@ -15,7 +16,9 @@ class profile::sevendaystodie (
     env     => [
       "SEVEN_DAYS_TO_DIE_TELNET_PORT=${server_telnet_port}",
       "SEVEN_DAYS_TO_DIE_TELNET_PASSWORD=${server_telnet_password}",
+      "SEVEN_DAYS_TO_DIE_TELNET_PORT=${server_telnet_port}",
       "SEVEN_DAYS_TO_DIE_UPDATE_CHECKING=${server_auto_update}",
+      "SEVEN_DAYS_TO_DIE=${server_update_branch}",
     ],
     volumes => [
       "${world_path}:/steamcmd/7dtd"
