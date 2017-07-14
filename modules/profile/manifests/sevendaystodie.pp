@@ -9,7 +9,7 @@ class profile::sevendaystodie (
 
   file { 'create 7dtd config file':
     path    => "${world_path}/server_data/serverconfig.xml",
-    content => $server_config,
+    content => epp('data/7dtd/serverconfig.xml.epp'),
     mode    => '0664',
     notify  => Docker::Run['7dtd'],
   }
