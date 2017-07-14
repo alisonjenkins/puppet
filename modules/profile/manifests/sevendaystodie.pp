@@ -4,7 +4,6 @@ class profile::sevendaystodie (
   Integer $server_auto_update,
   String $server_update_branch,
   String $world_path,
-  String $server_config,
 ) {
 
   file { 'create 7dtd config file':
