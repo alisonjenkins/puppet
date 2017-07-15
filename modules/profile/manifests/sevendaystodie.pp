@@ -31,6 +31,5 @@ class profile::sevendaystodie (
     content => epp('data/7dtd/serverconfig.xml.epp'),
     mode    => '0664',
     notify  => Docker::Run['7dtd'],
-    require  => Docker::Run['7dtd'],
   }
 }
