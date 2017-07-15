@@ -14,8 +14,8 @@
     <property name="ServerWebsiteURL"                       value=""/>                       <!-- Website URL for the server -->
     <property name="ServerDisabledNetworkProtocols"         value="UNET"/>                   <!-- Networking protocols that should not be used. Separated by comma. Possible values: UNET, RakNet, SteamNetworking. Ex: "unet,steamnetworking" -->
 
-    <property name="GameWorld"                              value="Navezgane"/>              <!-- Navezgane, Random Gen -->
-    <property name="GameName"                               value="My Game"/>                <!-- Whatever you want the game name to be THIS CONTROLS THE RANDOM GENERATION SEED -->
+    <property name="GameWorld"                              value="Random Gen"/>              <!-- Navezgane, Random Gen -->
+    <property name="GameName"                               value="RNJesus"/>                <!-- Whatever you want the game name to be THIS CONTROLS THE RANDOM GENERATION SEED -->
     <property name="GameDifficulty"                         value="2"/>                      <!-- 0 - 5, 0=easiest, 5=hardest -->
     <property name="GameMode"                               value="GameModeSurvivalMP"/>     <!-- GameModeSurvivalMP, GameModeSurvivalSP (MP has land protection) -->
 
@@ -74,4 +74,3 @@
 
     <property name="SaveGameFolder"                         value="server_data/world" />     <!-- use this to override the default save game path -->
 </ServerSettings>
-
