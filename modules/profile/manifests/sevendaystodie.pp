@@ -6,13 +6,6 @@ class profile::sevendaystodie (
   String $world_path,
 ) {
 
-  file { 'create 7dtd config file':
-    path    => "${world_path}/server_data/serverconfig.xml",
-    content => epp('data/7dtd/serverconfig.xml.epp'),
-    mode    => '0664',
-    notify  => Docker::Run['7dtd'],
-  }
-
   docker::run {'7dtd':
     image   => 'didstopia/7dtd-server',
     ports   => [
@@ -31,5 +24,13 @@ class profile::sevendaystodie (
     volumes => [
       "${world_path}:/steamcmd/7dtd"
     ]
+  }
+
+  file { 'create 7dtd config file':
+    path    => "${world_path}/server_data/serverconfig.xml",
+    content => epp('data/7dtd/serverconfig.xml.epp'),
+    mode    => '0664',
+    notify  => Docker::Run['7dtd'],
+    require  => Docker::Run['7dtd'],
   }
 }
