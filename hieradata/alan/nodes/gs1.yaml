@@ -19,3 +19,5 @@ profile::sevendaystodie::backup_bucket: ajj-backups
 profile::sevendaystodie::backup_key: gameservers/7dtd/server1/
 profile::sevendaystodie::backup_id: 7dtd-server1
 profile::sevendaystodie::backup_retention: 6M
+profile::sevendaystodie::cron_service: cronie
+profile::sevendaystodie::cron_service_package: cronie

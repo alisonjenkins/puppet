@@ -8,6 +8,8 @@ class profile::sevendaystodie (
   String $backup_key,
   String $backup_id,
   String $backup_retention,
+  String $cron_service,
+  String $cron_service_package,
 ) {
 
   docker::run {'7dtd':
@@ -37,8 +39,8 @@ class profile::sevendaystodie (
     notify  => Docker::Run['7dtd'],
   }
 
-  ensure_packages(['cron'], { 'ensure' => 'present' })
-  ensure_resource('service', 'cron', { 'ensure' => 'running', 'enable' => true, })
+  ensure_packages([$cron_service_package], { 'ensure' => 'present' })
+  ensure_resource('service', $cron_service, { 'ensure' => 'running', 'enable' => true, })
 
   duplicity { $backup_id:
     directory         => "${world_path}/server_data",
