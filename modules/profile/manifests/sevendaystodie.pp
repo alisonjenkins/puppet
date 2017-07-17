@@ -40,7 +40,7 @@ class profile::sevendaystodie (
   ensure_packages([$cron_service_package, 'python2-boto'], { 'ensure' => 'present' })
   ensure_resource('service', $cron_service, { 'ensure' => 'running', 'enable' => true, })
 
-  duplicity { $backup_id:
+  duplicity { '7dtd_backup':
     directory         => "${world_path}/server_data",
     target            => $backup_bucket,
     remove_older_than => $backup_retention,
