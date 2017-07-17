@@ -42,7 +42,7 @@ class profile::sevendaystodie (
 
   duplicity { '7dtd_backup':
     directory         => "${world_path}/server_data",
-    target            => $backup_bucket,
+    target            => $backup_bucket_path,
     remove_older_than => $backup_retention,
     require           => Package[$cron_service_package],
   }
