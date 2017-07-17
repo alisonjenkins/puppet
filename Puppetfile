@@ -32,3 +32,5 @@ mod 'tohuwabohu-duplicity', '4.7.0'
 # Git modules
 mod 'bashtoni-timezone',
   :git => 'https://github.com/bashton-ajenkins/puppet-timezone.git'
+mod 'puppet-duplicity',
+  :git => 'https://github.com/mattmcmanus/puppet-duplicity'
