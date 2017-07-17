@@ -15,7 +15,7 @@ profile::sevendaystodie::server_telnet_password: password
 profile::sevendaystodie::server_auto_update: 1
 profile::sevendaystodie::server_update_branch: prerelease
 profile::sevendaystodie::world_path: /srv/7dtd/world
-profile::sevendaystodie::backup_bucket_path: s3://ajj-backups/gameservers/7dtd/server1
+profile::sevendaystodie::backup_bucket_path: s3://s3-eu-west-1.amazonaws.com/ajj-backups/gameservers/7dtd/server1
 profile::sevendaystodie::backup_retention: 6M
 profile::sevendaystodie::cron_service: cronie
 profile::sevendaystodie::cron_service_package: cronie
