@@ -4,6 +4,10 @@ class profile::sevendaystodie (
   Integer $server_auto_update,
   String $server_update_branch,
   String $world_path,
+  String $backup_bucket,
+  String $backup_key,
+  String $backup_id,
+  String $backup_retention,
 ) {
 
   docker::run {'7dtd':
@@ -32,4 +36,13 @@ class profile::sevendaystodie (
     mode    => '0664',
     notify  => Docker::Run['7dtd'],
   }
+
+  duplicity { "7dtd backup: ${world_path}/server_datap":
+    directory         => "${world_path}/server_data",
+    bucket            => $backup_bucket,
+    dest_key          => $backup_key,
+    dest_id           => $backup_id,
+    remove_older_than => $backup_retention,
+  }
+
 }
