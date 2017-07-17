@@ -4,9 +4,7 @@ class profile::sevendaystodie (
   Integer $server_auto_update,
   String $server_update_branch,
   String $world_path,
-  String $backup_bucket,
-  String $backup_key,
-  String $backup_id,
+  String $backup_bucket_path,
   String $backup_retention,
   String $cron_service,
   String $cron_service_package,
@@ -44,9 +42,7 @@ class profile::sevendaystodie (
 
   duplicity { $backup_id:
     directory         => "${world_path}/server_data",
-    bucket            => $backup_bucket,
-    dest_key          => $backup_key,
-    dest_id           => $backup_id,
+    target            => $backup_bucket,
     remove_older_than => $backup_retention,
     require           => Package[$cron_service_package],
   }
