@@ -37,7 +37,7 @@ class profile::sevendaystodie (
     notify  => Docker::Run['7dtd'],
   }
 
-  duplicity { "7dtd backup: ${world_path}/server_datap":
+  duplicity { $backup_id:
     directory         => "${world_path}/server_data",
     bucket            => $backup_bucket,
     dest_key          => $backup_key,
