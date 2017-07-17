@@ -48,7 +48,7 @@ class profile::sevendaystodie (
     dest_key          => $backup_key,
     dest_id           => $backup_id,
     remove_older_than => $backup_retention,
-    require           => Package['cron'],
+    require           => Package[$cron_service_package],
   }
 
 }
