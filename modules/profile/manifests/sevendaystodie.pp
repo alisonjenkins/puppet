@@ -39,7 +39,7 @@ class profile::sevendaystodie (
     notify  => Docker::Run['7dtd'],
   }
 
-  ensure_packages([$cron_service_package], { 'ensure' => 'present' })
+  ensure_packages([$cron_service_package, 'python2-boto'], { 'ensure' => 'present' })
   ensure_resource('service', $cron_service, { 'ensure' => 'running', 'enable' => true, })
 
   duplicity { $backup_id:
