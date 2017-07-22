@@ -87,7 +87,7 @@ class profile::minecraft (
         dns              => ['8.8.8.8', '8.8.4.4'],
         restart_service  => true,
         pull_on_start    => true,
-        extra_parameters => ['--restart=always --user="minecraft:minecraft"'],
+        extra_parameters => ['--restart=always --user="995:994"'],
     }
 
     $skyfactory3_vols = [
@@ -120,6 +120,6 @@ class profile::minecraft (
         dns              => ['8.8.8.8', '8.8.4.4'],
         restart_service  => true,
         pull_on_start    => true,
-        extra_parameters => ['--restart=always --user="minecraft:minecraft"'],
+        extra_parameters => ['--restart=always --user="995:994"'],
     }
 }
