@@ -1,226 +1,125 @@
-class profile::minecraft {
-    include ::systemd
-    class {'docker':
-        version      => 'latest',
-    } ->
+class profile::minecraft (
+    Array $dirs = [
+        '/srv/minecraft',
+        '/srv/minecraft/direwolf20',
+        '/srv/minecraft/direwolf20/backups/',
+        '/srv/minecraft/direwolf20/config.override/',
+        '/srv/minecraft/direwolf20/config/',
+        '/srv/minecraft/direwolf20/config/JourneyMapServer',
+        '/srv/minecraft/direwolf20/crash-reports',
+        '/srv/minecraft/direwolf20/logs',
+        '/srv/minecraft/direwolf20/mods.override/',
+        '/srv/minecraft/direwolf20/world',
+        '/srv/minecraft/skyfactory3',
+        '/srv/minecraft/skyfactory3/world',
+        '/srv/minecraft/skyfactory3/logs',
+        '/srv/minecraft/skyfactory3/crash-reports',
+        '/srv/minecraft/skyfactory3/config/',
+        '/srv/minecraft/skyfactory3/config.override/',
+        '/srv/minecraft/skyfactory3/mods.override/',
+        '/srv/minecraft/skyfactory3/backups/',
+        '/srv/minecraft/skyfactory3/config/JourneyMapServer',
+    ],
+    Array $files = [
+        '/srv/minecraft/direwolf20/banned-ips.json',
+        '/srv/minecraft/direwolf20/banned-players.json',
+        '/srv/minecraft/direwolf20/ops.json',
+        '/srv/minecraft/direwolf20/server.properties',
+        '/srv/minecraft/direwolf20/usercache.json',
+        '/srv/minecraft/direwolf20/whitelist.json',
+        '/srv/minecraft/skyfactory3/banned-ips.json',
+        '/srv/minecraft/skyfactory3/usercache.json',
+        '/srv/minecraft/skyfactory3/whitelist.json',
+        '/srv/minecraft/skyfactory3/server.properties',
+        '/srv/minecraft/skyfactory3/banned-players.json',
+        '/srv/minecraft/skyfactory3/ops.json',
+    ]
+)
+{
+    include 'docker'
+
     user { 'minecraft':
         ensure => present,
         system => true,
-    } ->
-    file { '/srv/minecraft':
+    }
+
+    file { $dirs:
         ensure => directory,
         owner  => 'minecraft',
         group  => 'minecraft',
         mode   => '0700'
-    } ->
-    file { '/srv/minecraft/direwolf20':
-        ensure => directory,
-        owner  => 'minecraft',
-        group  => 'minecraft',
-        mode   => '0775',
-    } ->
-    file { '/srv/minecraft/direwolf20/world':
-        ensure => directory,
-        owner  => 'minecraft',
-        group  => 'minecraft',
-        mode   => '0775',
-    } ->
-    file { '/srv/minecraft/direwolf20/logs':
-        ensure => directory,
-        owner  => 'minecraft',
-        group  => 'minecraft',
-        mode   => '0775',
-    } ->
-    file { '/srv/minecraft/direwolf20/crash-reports':
-        ensure => directory,
-        owner  => 'minecraft',
-        group  => 'minecraft',
-        mode   => '0775',
-    } ->
-    file { '/srv/minecraft/direwolf20/config/':
-        ensure => directory,
-        owner  => 'minecraft',
-        group  => 'minecraft',
-        mode   => '0775',
-    } ->
-    file { '/srv/minecraft/direwolf20/config.override/':
-        ensure => directory,
-        owner  => 'minecraft',
-        group  => 'minecraft',
-        mode   => '0775',
-    } ->
-    file { '/srv/minecraft/direwolf20/mods.override/':
-        ensure => directory,
-        owner  => 'minecraft',
-        group  => 'minecraft',
-        mode   => '0775',
-    } ->
-    file { '/srv/minecraft/direwolf20/backups/':
-        ensure => directory,
-        owner  => 'minecraft',
-        group  => 'minecraft',
-        mode   => '0775',
-    } ->
-    file { '/srv/minecraft/direwolf20/config/JourneyMapServer':
-        ensure => directory,
-        owner  => 'minecraft',
-        group  => 'minecraft',
-        mode   => '0775',
-    } ->
-    file { '/srv/minecraft/direwolf20/banned-ips.json':
-        ensure => file,
-        owner  => 'minecraft',
-        group  => 'minecraft',
-        mode   => '0775',
-    } ->
-    file { '/srv/minecraft/direwolf20/banned-players.json':
-        ensure => file,
-        owner  => 'minecraft',
-        group  => 'minecraft',
-        mode   => '0775',
-    } ->
-    file { '/srv/minecraft/direwolf20/ops.json':
-        ensure => file,
-        owner  => 'minecraft',
-        group  => 'minecraft',
-        mode   => '0775',
-    } ->
-    file { '/srv/minecraft/direwolf20/usercache.json':
-        ensure => file,
-        owner  => 'minecraft',
-        group  => 'minecraft',
-        mode   => '0775',
-    } ->
-    file { '/srv/minecraft/direwolf20/whitelist.json':
-        ensure => file,
-        owner  => 'minecraft',
-        group  => 'minecraft',
-        mode   => '0775',
-    } ->
-    file { '/srv/minecraft/direwolf20/server.properties':
-        ensure => file,
-        owner  => 'minecraft',
-        group  => 'minecraft',
-        mode   => '0775',
-    }->
-    file {'/usr/lib/systemd/system/direwolf20.service':
-        ensure => file,
-        owner  => 'root',
-        group  => 'root',
-        source => 'https://raw.githubusercontent.com/demon012/docker-minecraft-direwolf20/master/direwolf20.service',
-        notify => Exec['systemctl-daemon-reload'],
-    } ->
-    service { 'direwolf20':
-        ensure     => running,
-        enable     => true,
-        hasrestart => false,
-        hasstatus  => false,
     }
 
+    file { $files:
+        ensure => file,
+        owner  => 'minecraft',
+        group  => 'minecraft',
+        mode   => '0700'
+    }
 
+    $direwolf_vols = [
+        '/srv/minecraft/direwolf20/world:/srv/minecraft/world',
+        '/srv/minecraft/direwolf20/banned-ips.json:/srv/minecraft/banned-ips.json',
+        '/srv/minecraft/direwolf20/banned-players.json:/srv/minecraft/banned-players.json',
+        '/srv/minecraft/direwolf20/logs:/srv/minecraft/logs',
+        '/srv/minecraft/direwolf20/crash-reports:/srv/minecraft/crash-reports',
+        '/srv/minecraft/direwolf20/ops.json:/srv/minecraft/ops.json',
+        '/srv/minecraft/direwolf20/usercache.json:/srv/minecraft/usercache.json',
+        '/srv/minecraft/direwolf20/whitelist.json:/srv/minecraft/whitelist.json',
+        '/srv/minecraft/direwolf20/server.properties:/srv/minecraft/server.properties',
+        '/srv/minecraft/direwolf20/config/JourneyMapServer:/srv/minecraft/config/JourneyMapServer',
+        '/srv/minecraft/direwolf20/backups:/srv/minecraft/backups',
+        '/srv/minecraft/direwolf20/mods.override:/srv/minecraft/mods.override',
+        '/srv/minecraft/direwolf20/config.override:/srv/minecraft/config.override',
+    ]
 
-    file { '/srv/minecraft/skyfactory3':
-        ensure   => directory,
-        owner    => 'minecraft',
-        group    => 'minecraft',
-        mode     => '0775',
-        require => File['/srv/minecraft'],
-    } ->
-    file { '/srv/minecraft/skyfactory3/world':
-        ensure => directory,
-        owner  => 'minecraft',
-        group  => 'minecraft',
-        mode   => '0775',
-    } ->
-    file { '/srv/minecraft/skyfactory3/logs':
-        ensure => directory,
-        owner  => 'minecraft',
-        group  => 'minecraft',
-        mode   => '0775',
-    } ->
-    file { '/srv/minecraft/skyfactory3/crash-reports':
-        ensure => directory,
-        owner  => 'minecraft',
-        group  => 'minecraft',
-        mode   => '0775',
-    } ->
-    file { '/srv/minecraft/skyfactory3/config/':
-        ensure => directory,
-        owner  => 'minecraft',
-        group  => 'minecraft',
-        mode   => '0775',
-    } ->
-    file { '/srv/minecraft/skyfactory3/config.override/':
-        ensure => directory,
-        owner  => 'minecraft',
-        group  => 'minecraft',
-        mode   => '0775',
-    } ->
-    file { '/srv/minecraft/skyfactory3/mods.override/':
-        ensure => directory,
-        owner  => 'minecraft',
-        group  => 'minecraft',
-        mode   => '0775',
-    } ->
-    file { '/srv/minecraft/skyfactory3/backups/':
-        ensure => directory,
-        owner  => 'minecraft',
-        group  => 'minecraft',
-        mode   => '0775',
-    } ->
-    file { '/srv/minecraft/skyfactory3/config/JourneyMapServer':
-        ensure => directory,
-        owner  => 'minecraft',
-        group  => 'minecraft',
-        mode   => '0775',
-    } ->
-    file { '/srv/minecraft/skyfactory3/banned-ips.json':
-        ensure => file,
-        owner  => 'minecraft',
-        group  => 'minecraft',
-        mode   => '0775',
-    } ->
-    file { '/srv/minecraft/skyfactory3/banned-players.json':
-        ensure => file,
-        owner  => 'minecraft',
-        group  => 'minecraft',
-        mode   => '0775',
-    } ->
-    file { '/srv/minecraft/skyfactory3/ops.json':
-        ensure => file,
-        owner  => 'minecraft',
-        group  => 'minecraft',
-        mode   => '0775',
-    } ->
-    file { '/srv/minecraft/skyfactory3/usercache.json':
-        ensure => file,
-        owner  => 'minecraft',
-        group  => 'minecraft',
-        mode   => '0775',
-    } ->
-    file { '/srv/minecraft/skyfactory3/whitelist.json':
-        ensure => file,
-        owner  => 'minecraft',
-        group  => 'minecraft',
-        mode   => '0775',
-    } ->
-    file { '/srv/minecraft/skyfactory3/server.properties':
-        ensure => file,
-        owner  => 'minecraft',
-        group  => 'minecraft',
-        mode   => '0775',
-    }->
-    file {'/usr/lib/systemd/system/skyfactory3.service':
-        ensure => file,
-        owner  => 'root',
-        group  => 'root',
-        source => 'https://raw.githubusercontent.com/demon012/docker-minecraft-skyfactory3/master/skyfactory3.service',
-        notify => Exec['systemctl-daemon-reload'],
-    } ->
-    service { 'skyfactory3':
-        ensure     => running,
-        enable     => true,
-        hasrestart => false,
-        hasstatus  => false,
+    docker::run { 'direwolf20-1.7.10':
+        image            => 'demon012/minecraft-direwolf20',
+        ports            => [
+            '25565:25565',
+        ],
+        expose           => [
+            '25565/tcp',
+        ],
+        env              => [ 'MCMEM=4000' ],
+        volumes          => $direwolf_vols,
+        memory_limit     => '4096m', # (format: '<number><unit>', where unit = b, k, m or g)
+        dns              => ['8.8.8.8', '8.8.4.4'],
+        restart_service  => true,
+        pull_on_start    => true,
+        extra_parameters => ['--restart=always'],
+    }
+
+    $skyfactory3_vols = [
+        '/srv/minecraft/skyfactory3/world:/srv/minecraft/world',
+        '/srv/minecraft/skyfactory3/banned-ips.json:/srv/minecraft/banned-ips.json',
+        '/srv/minecraft/skyfactory3/banned-players.json:/srv/minecraft/banned-players.json',
+        '/srv/minecraft/skyfactory3/logs:/srv/minecraft/logs',
+        '/srv/minecraft/skyfactory3/crash-reports:/srv/minecraft/crash-reports',
+        '/srv/minecraft/skyfactory3/ops.json:/srv/minecraft/ops.json',
+        '/srv/minecraft/skyfactory3/usercache.json:/srv/minecraft/usercache.json',
+        '/srv/minecraft/skyfactory3/whitelist.json:/srv/minecraft/whitelist.json',
+        '/srv/minecraft/skyfactory3/server.properties:/srv/minecraft/server.properties',
+        '/srv/minecraft/skyfactory3/config/JourneyMapServer:/srv/minecraft/config/JourneyMapServer',
+        '/srv/minecraft/skyfactory3/backups:/srv/minecraft/backups',
+        '/srv/minecraft/skyfactory3/mods.override:/srv/minecraft/mods.override',
+        '/srv/minecraft/skyfactory3/config.override:/srv/minecraft/config.override',
+    ]
+
+    docker::run { 'skyfactory3':
+        image            => 'demon012/minecraft-skyfactory3',
+        ports            => [
+            '25566:25565',
+        ],
+        expose           => [
+            '25565/tcp',
+        ],
+        env              => [ 'MCMEM=4000' ],
+        volumes          => $skyfactory3_vols,
+        memory_limit     => '4096m', # (format: '<number><unit>', where unit = b, k, m or g)
+        dns              => ['8.8.8.8', '8.8.4.4'],
+        restart_service  => true,
+        pull_on_start    => true,
+        extra_parameters => ['--restart=always'],
     }
 }
