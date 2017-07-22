@@ -8,6 +8,8 @@ class profile::sevendaystodie (
   String $backup_retention,
   String $cron_service,
   String $cron_service_package,
+  String $aws_id,
+  String $aws_key,
 ) {
 
   docker::run {'7dtd':
@@ -42,6 +44,8 @@ class profile::sevendaystodie (
 
   duplicity { '7dtd_backup':
     directory         => "${world_path}/server_data",
+    dest_id           => $aws_id,
+    dest_key          => $aws_key,
     target            => $backup_bucket_path,
     remove_older_than => $backup_retention,
     require           => Package[$cron_service_package],
