@@ -52,6 +52,7 @@ class profile::minecraft (
 
     file { $files:
         ensure => file,
+        force  => true,
         owner  => 'minecraft',
         group  => 'minecraft',
         mode   => '0700'
