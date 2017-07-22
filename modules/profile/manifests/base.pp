@@ -17,6 +17,7 @@ class profile::base (
       'vim'
   ],
   $user_accounts = {},
+  $passwordless_sudo = false,
 )
 {
   if $facts['os']['family'] =~ /linux$/ {
@@ -50,34 +51,49 @@ class profile::base (
       path   => '/etc/systemd/timesyncd.conf',
       line   => 'NTP=0.arch.pool.ntp.org 1.arch.pool.ntp.org 2.arch.pool.ntp.org 3.arch.pool.ntp.org',
       match  => '^NTP=',
-    } ->
+      notify => Exec['systemd-timesyncd']
+    }
+
     file_line { 'NTP config fallback':
       ensure => present,
       path   => '/etc/systemd/timesyncd.conf',
       line   => 'FallbackNTP=0.pool.ntp.org 1.pool.ntp.org 0.fr.pool.ntp.org',
       match  => '^FallbackNTP=',
-    } ->
+      notify => Exec['systemd-timesyncd']
+    }
+
     exec { 'systemd-timesyncd':
-      command => "/usr/bin/timedatectl set-ntp true",
+      command => '/usr/bin/timedatectl set-ntp true',
       unless  => '/usr/bin/timedatectl status | /usr/bin/grep \'NTP synchronized: yes\''
     }# }}}
     # {{{ sudo configuration
-    file { '/etc/sudoers.d/wheel':
-      ensure => file,
-      owner  => 'root',
-      group  => 'root',
-      mode   => '0444',
-    } ->
-    file_line { 'wheel sudo access':
-      ensure => present,
-      line   => '%wheel ALL=(ALL) ALL',
-      path   => '/etc/sudoers.d/wheel',
+    if $passwordless_sudo {
+      file { 'Add passwordless sudo for members of wheel group':
+        ensure  => file,
+        path    => '/etc/sudoers.d/wheel',
+        owner   => 'root',
+        group   => 'root',
+        mode    => '0444',
+        content => '%wheel ALL = (ALL) NOPASSWD: ALL'
+      }
+    } else {
+      file { 'Add sudo access for members of wheel group':
+        ensure  => file,
+        path    => '/etc/sudoers.d/wheel',
+        owner   => 'root',
+        group   => 'root',
+        mode    => '0444',
+        content => '%wheel ALL = (ALL) NOPASSWD: ALL'
+      }
     }
 
-    file_line { 'keep ssh_auth_sock':
-      ensure => present,
-      path   => '/etc/sudoers',
-      line   => 'Defaults env_keep+=SSH_AUTH_SOCK'
+    file { 'keep ssh_auth_sock':
+      ensure  => file,
+      path    => '/etc/sudoers.d/keep_auth_sock',
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0444',
+      content => 'Defaults env_keep+=SSH_AUTH_SOCK'
     }
     # }}}
     # {{{ User creation
