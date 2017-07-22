@@ -40,22 +40,37 @@ class profile::minecraft (
 
     user { 'minecraft':
         ensure => present,
+        uid    => 996,
         system => true,
     }
 
+    group { 'minecraft':
+        ensure => present,
+        gid    => 995,
+    }
+
     file { $dirs:
-        ensure => directory,
-        owner  => 'minecraft',
-        group  => 'minecraft',
-        mode   => '0700'
+        ensure  => directory,
+        owner   => 'minecraft',
+        group   => 'minecraft',
+        mode    => '0700',
+        require => [
+            User['minecraft'],
+            Group['minecraft'],
+        ]
+
     }
 
     file { $files:
-        ensure => file,
-        force  => true,
-        owner  => 'minecraft',
-        group  => 'minecraft',
-        mode   => '0700'
+        ensure  => file,
+        force   => true,
+        owner   => 'minecraft',
+        group   => 'minecraft',
+        mode    => '0700',
+        require => [
+            User['minecraft'],
+            Group['minecraft'],
+        ]
     }
 
     $direwolf_vols = [
