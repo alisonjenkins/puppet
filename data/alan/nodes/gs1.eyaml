@@ -10,6 +10,7 @@ classes:
 #     demon012/minecraft-skyfactory3:
 #         image_tag: 'latest'
 
+profile::base::passwordless_sudo: true
 profile::sevendaystodie::server_telnet_port: 12345
 profile::sevendaystodie::server_telnet_password: ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEArWzIwHLWV9j4VGbV9TseUxoDnalKIo+BkFb0WMprbmMtti+vu6To8DtM2GFixnv1djOV+HT4rN17WHLDC4TZ4LmrXMJ/pVKfgVyjiFSY1XnVDwLVKKweEEPm27/mpgQH/aJ9HfzijjRranIPFnRGBP8Ss2aS1g0AdsINxHq4Jg2v+kpjX/M/JjN1qCUvYLenzlpW0ZvCRgza5WRcDOHGbPvwUmJwTaxrIxWBT8/EbpJnN9T2g9OQY0JkNSumPq9oQE7Gq25dhrDpeoG+CELuGIKnwuHsf0OHLNRj61Od7ngT4TDg1uK7Xw2TcmUIYD2Fa44GWxRr+hSDsVzScxElvzA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBD0iTdz2+qNqBqcjx2OhRrJgBDBMJKJIdCS4IX03Bqoo+tz]
 profile::sevendaystodie::server_auto_update: 1
