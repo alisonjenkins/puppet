@@ -73,7 +73,7 @@ class profile::base (
         path    => '/etc/sudoers.d/wheel',
         owner   => 'root',
         group   => 'root',
-        mode    => '0444',
+        mode    => '0440',
         content => '%wheel ALL = (ALL) NOPASSWD: ALL'
       }
     } else {
@@ -82,7 +82,7 @@ class profile::base (
         path    => '/etc/sudoers.d/wheel',
         owner   => 'root',
         group   => 'root',
-        mode    => '0444',
+        mode    => '0440',
         content => '%wheel ALL = (ALL) NOPASSWD: ALL'
       }
     }
@@ -92,7 +92,7 @@ class profile::base (
       path    => '/etc/sudoers.d/keep_auth_sock',
       owner   => 'root',
       group   => 'root',
-      mode    => '0444',
+      mode    => '0440',
       content => 'Defaults env_keep+=SSH_AUTH_SOCK'
     }
     # }}}
