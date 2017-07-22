@@ -83,7 +83,7 @@ class profile::base (
         owner   => 'root',
         group   => 'root',
         mode    => '0440',
-        content => '%wheel ALL = (ALL) NOPASSWD: ALL'
+        content => '%wheel ALL = (ALL) ALL'
       }
     }
 
