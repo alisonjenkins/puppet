@@ -93,7 +93,7 @@ class profile::base (
       owner   => 'root',
       group   => 'root',
       mode    => '0440',
-      content => 'Defaults env_keep+=SSH_AUTH_SOCK'
+      content => 'Defaults env_keep += SSH_AUTH_SOCK'
     }
     # }}}
     # {{{ User creation
