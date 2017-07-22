@@ -1,7 +1,7 @@
 ---
 classes:
     # - docker::images
-    # - profile::minecraft
+    - profile::minecraft
     - profile::sevendaystodie
 
 # docker::images::images:
