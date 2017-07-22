@@ -1,4 +1,6 @@
 class profile::minecraft (
+    String $minecraft_uid = '995',
+    String $minecraft_gid = '994',
     Array $dirs = [
         '/srv/minecraft',
         '/srv/minecraft/direwolf20',
@@ -38,15 +40,16 @@ class profile::minecraft (
 {
     include 'docker'
 
-    user { 'minecraft':
-        ensure => present,
-        uid    => 996,
-        system => true,
-    }
-
     group { 'minecraft':
         ensure => present,
-        gid    => 995,
+        gid    => $minecraft_gid,
+    }
+
+    user { 'minecraft':
+        ensure  => present,
+        uid     => $minecraft_uid,
+        system  => true,
+        require => Group['minecraft']
     }
 
     file { $dirs:
@@ -130,7 +133,11 @@ class profile::minecraft (
         expose           => [
             '25565/tcp',
         ],
-        env              => [ 'MCMEM=4000' ],
+        env              => [
+            "MCUID=${minecraft_uid}",
+            "MCGID=${minecraft_gid}",
+            'MCMEM=4000',
+        ],
         volumes          => $skyfactory3_vols,
         memory_limit     => '4096m', # (format: '<number><unit>', where unit = b, k, m or g)
         dns              => ['8.8.8.8', '8.8.4.4'],
