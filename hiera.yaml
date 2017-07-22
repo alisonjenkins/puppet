@@ -5,21 +5,27 @@ defaults:
 hierarchy:
   - name: "Per-node data"
     lookup_key: eyaml_lookup_key
-    path: "nodes/%{::hostname}.eyaml"
-  # - name: "Environment specific data"
-  #   path: "environment/%{server_facts.environment}.eyaml"
+    path: "nodes/%{::hostname}.yaml"
+
   - name: "Virtualised / Non Virtualised specific data."
     lookup_key: eyaml_lookup_key
-    path: "virtual/%{::is_virtual}.eyaml"
+    path: "virtual/%{::is_virtual}.yaml"
+
+  - name: "Owner specific common hiera variables"
+    lookup_key: eyaml_lookup_key
+    path: "%{::owner}/common.yaml"
+
+  - name: "Model specific hiera configuration"
+    lookup_key: eyaml_lookup_key
+    path: "models/%{::dmi.product.name}.yaml"
+
+  - name: "Data common to all machines"
+    lookup_key: eyaml_lookup_key
+    path: "common.yaml"
+
   - name: "Owner specific hiera nodes"
     lookup_key: eyaml_lookup_key
     path: "%{::owner}/nodes/%{::hostname}.eyaml"
-  - name: "Owner specific common hiera variables"
-    lookup_key: eyaml_lookup_key
-    path: "%{::owner}/common.eyaml"
-  - name: "Model specific hiera configuration"
-    lookup_key: eyaml_lookup_key
-    path: "models/%{::dmi.product.name}.eyaml"
-  - name: "Data common to all machines"
-    lookup_key: eyaml_lookup_key
-    path: "common.eyaml"
+    options:
+      pkcs7_private_key: keys/private_key.pkcs7.pem
+      pkcs7_public_key:  keys/public_key.pkcs7.pem
