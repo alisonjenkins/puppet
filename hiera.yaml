@@ -1,20 +1,25 @@
 ---
 version: 5
 defaults:
-  datadir: hieradata
-  data_hash: yaml_data
+  datadir: data
 hierarchy:
   - name: "Per-node data"
-    path: "nodes/%{::hostname}.yaml"
+    lookup_key: eyaml_lookup_key
+    path: "nodes/%{::hostname}.eyaml"
   # - name: "Environment specific data"
-  #   path: "environment/%{server_facts.environment}.yaml"
+  #   path: "environment/%{server_facts.environment}.eyaml"
   - name: "Virtualised / Non Virtualised specific data."
-    path: "virtual/%{::is_virtual}.yaml"
+    lookup_key: eyaml_lookup_key
+    path: "virtual/%{::is_virtual}.eyaml"
   - name: "Owner specific hiera nodes"
-    path: "%{::owner}/nodes/%{::hostname}.yaml"
+    lookup_key: eyaml_lookup_key
+    path: "%{::owner}/nodes/%{::hostname}.eyaml"
   - name: "Owner specific common hiera variables"
-    path: "%{::owner}/common.yaml"
+    lookup_key: eyaml_lookup_key
+    path: "%{::owner}/common.eyaml"
   - name: "Model specific hiera configuration"
-    path: "models/%{::dmi.product.name}.yaml"
+    lookup_key: eyaml_lookup_key
+    path: "models/%{::dmi.product.name}.eyaml"
   - name: "Data common to all machines"
-    path: "common.yaml"
+    lookup_key: eyaml_lookup_key
+    path: "common.eyaml"
