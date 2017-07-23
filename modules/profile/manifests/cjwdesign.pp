@@ -38,7 +38,7 @@ class profile::cjwdesign (
 
   file_line { 'cjwdesign db host':
     ensure => present,
-    line   => "^  'host' => '${cjwdesign_db_host}',",
+    line   => "  'host' => '${cjwdesign_db_host}',",
     match  => '^  \'host\' => .*$',
     path   => $drupal_config_path,
     notify => Service['nginx'],
@@ -46,7 +46,7 @@ class profile::cjwdesign (
 
   file_line { 'cjwdesign db database':
     ensure => present,
-    line   => "^  'database' => '${cjwdesign_db_database}',",
+    line   => "  'database' => '${cjwdesign_db_database}',",
     match  => '^  \'database\' => .*$',
     path   => $drupal_config_path,
     notify => Service['nginx'],
@@ -54,7 +54,7 @@ class profile::cjwdesign (
 
   file_line { 'cjwdesign db user':
     ensure => present,
-    line   => "^  'username' => '${cjwdesign_db_user}',",
+    line   => "  'username' => '${cjwdesign_db_user}',",
     match  => '^  \'username\' => .*$',
     path   => $drupal_config_path,
     notify => Service['nginx'],
@@ -62,7 +62,7 @@ class profile::cjwdesign (
 
   file_line { 'cjwdesign db pass':
     ensure => present,
-    line   => "^  'password' => '${cjwdesign_db_pass}',",
+    line   => "  'password' => '${cjwdesign_db_pass}',",
     match  => '^  \'password\' => .*$',
     path   => $drupal_config_path,
     notify => Service['nginx'],
