@@ -9,17 +9,12 @@ class profile::cjwdesign (
     group   => 'root',
     mode    => '0664',
     notify  => Service['nginx'],
-    require => Service['nginx'],
   }
 
   file {'enable cjwdesign nginx config':
     ensure  => link,
     path    => '/etc/nginx/sites-enabled/cjwdesign.net.conf',
     source  => '/etc/nginx/sites-available/cjwdesign.net.conf',
-    require => [
-      File['cjwdesign nginx config'],
-      File['/etc/nginx/sites-enabled'],
-    ],
     notify  => Service['nginx'],
   }
 
