@@ -6,6 +6,9 @@ class profile::cjwdesign (
   String $drupal_config_path,
 ) {
 
+  group { 'cjwdesign':
+    ensure => present,
+  }
 
   file {'cjwdesign nginx config':
     ensure  => file,
@@ -29,11 +32,13 @@ class profile::cjwdesign (
   }
 
   file { 'cjwdesign site directory':
-    ensure => directory,
-    path   => '/srv/http/cjwdesign.net',
-    owner  => 'root',
-    group  => 'root',
-    mode   => '0775',
+    ensure  => directory,
+    path    => '/srv/http/cjwdesign.net',
+    owner   => 'html',
+    group   => 'cjwdesign',
+    recurse => true,
+    mode    => '0775',
+    require => Group['cjwdesign'],
   }
 
   file_line { 'cjwdesign db host':
