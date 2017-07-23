@@ -1,5 +1,12 @@
 class profile::cjwdesign (
+  String $cjwdesign_db_host,
+  String $cjwdesign_db_database,
+  String $cjwdesign_db_user,
+  String $cjwdesign_db_pass,
+  String $drupal_config_path,
 ) {
+
+  include '::mysql::server'
 
   file {'cjwdesign nginx config':
     ensure  => file,
@@ -28,6 +35,43 @@ class profile::cjwdesign (
     owner  => 'root',
     group  => 'root',
     mode   => '0775',
+  }
+
+  file_line { 'cjwdesign db host':
+    ensure => present,
+    path   => $drupal_config_path,
+    notify => Service['nginx'],
+  }
+
+  file_line { 'cjwdesign db database':
+    ensure => present,
+    path   => $drupal_config_path,
+    notify => Service['nginx'],
+  }
+
+  file_line { 'cjwdesign db user':
+    ensure => present,
+    path   => $drupal_config_path,
+    notify => Service['nginx'],
+  }
+
+  file_line { 'cjwdesign db pass':
+    ensure => present,
+    path   => $drupal_config_path,
+    notify => Service['nginx'],
+  }
+
+  mysql::db { $cjwdesign_db_database:
+    user     => $cjwdesign_db_database,
+    password => $cjwdesign_db_pass,
+    host     => $cjwdesign_db_host,
+    grant    => [
+      'SELECT',
+      'UPDATE',
+      'INSERT',
+      'CREATE'
+    ],
+    require  => Service['mysql'],
   }
 
 }
