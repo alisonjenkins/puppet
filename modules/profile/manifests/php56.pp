@@ -6,10 +6,10 @@ class profile::php56 (
   docker::run { 'php56':
     image            => 'php:5.6-fpm-alpine',
     ports            => [
-      "9000:$listen_port",
+      "9000:${listen_port}",
     ],
     expose           => [
-      '$listen_port'
+      "${listen_port}"
     ],
     volumes          => $volumes,
     restart_service  => true,
