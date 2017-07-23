@@ -189,6 +189,7 @@ profile::mumble_server::config: |
     Ice.Warn.UnknownProperties=1
     Ice.MessageSizeMax=65536
 
+profile::base::passwordless_sudo: true
 profile::php56::listen_port: 9001
 profile::php56::dns_servers:
     - 8.8.8.8
