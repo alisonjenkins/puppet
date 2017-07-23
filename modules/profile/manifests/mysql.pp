@@ -13,6 +13,7 @@ class profile::mysql(
     override_options        => {
       mysqld => { bind-address => '0.0.0.0'}
     },
+    notify                  => Service['mariadb']
   }
 
   class { '::mysql::client':
