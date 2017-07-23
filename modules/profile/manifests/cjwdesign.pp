@@ -34,7 +34,7 @@ class profile::cjwdesign (
   file { 'cjwdesign site directory':
     ensure  => directory,
     path    => '/srv/http/cjwdesign.net',
-    owner   => 'html',
+    owner   => 'http',
     group   => 'cjwdesign',
     recurse => true,
     mode    => '0775',
