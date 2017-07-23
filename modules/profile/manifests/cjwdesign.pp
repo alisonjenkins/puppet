@@ -78,7 +78,7 @@ class profile::cjwdesign (
       'INSERT',
       'CREATE'
     ],
-    require  => Service['mysql'],
+    require  => Service['mariadb'],
   }
 
 }
