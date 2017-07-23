@@ -5,8 +5,6 @@ class profile::mysql(
   String $service_name = 'mariadb',
 ) {
 
-  include '::mysql::server'
-
   class { '::mysql::server':
     package_name            => $server_package,
     root_password           => $root_password,
