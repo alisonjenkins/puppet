@@ -9,7 +9,7 @@ class profile::php56 (
       "9000:${listen_port}",
     ],
     expose           => [
-      "${listen_port}"
+      "${listen_port}/tcp"
     ],
     volumes          => $volumes,
     restart_service  => true,
