@@ -10,7 +10,7 @@ class profile::mysql(
     root_password           => $root_password,
     service_name            => $service_name,
     remove_default_accounts => true,
-    override_options =>  {
+    override_options        => {
       mysqld => { bind-address => '0.0.0.0'}
     },
   }
