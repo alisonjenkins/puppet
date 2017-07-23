@@ -1,7 +1,5 @@
 class profile::cjwdesign (
 ) {
-  require profile::php56
-  require profile::nginx
 
   file {'cjwdesign nginx config':
     ensure  => file,
@@ -14,22 +12,23 @@ class profile::cjwdesign (
     require => Service['nginx'],
   }
 
-  # file {'enable cjwdesign nginx config':
-  #   ensure  => link,
-  #   path    => '/etc/nginx/sites-enabled/cjwdesign.net.conf',
-  #   source  => '/etc/nginx/sites-available/cjwdesign.net.conf',
-  #   require => [
-  #     File['cjwdesign nginx config'],
-  #     File['/etc/nginx/sites-enabled'],
-  #   ],
-  #   notify  => Service['nginx'],
-  # }
+  file {'enable cjwdesign nginx config':
+    ensure  => link,
+    path    => '/etc/nginx/sites-enabled/cjwdesign.net.conf',
+    source  => '/etc/nginx/sites-available/cjwdesign.net.conf',
+    require => [
+      File['cjwdesign nginx config'],
+      File['/etc/nginx/sites-enabled'],
+    ],
+    notify  => Service['nginx'],
+  }
 
-  # file { 'cjwdesign site directory':
-  #   ensure => directory,
-  #   path   => '/srv/http/cjwdesign.net',
-  #   owner  => 'root',
-  #   group  => 'root',
-  #   mode   => '0775',
-  # }
+  file { 'cjwdesign site directory':
+    ensure => directory,
+    path   => '/srv/http/cjwdesign.net',
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0775',
+  }
+
 }

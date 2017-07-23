@@ -1,9 +1,9 @@
 ---
 classes:
     - profile::mumble_server
+    - profile::php56
+    - profile::nginx
     - profile::cjwdesign
-    # - "profile::nginx_pagespeed"
-    # - "profile::mysql_server"
 
 profile::mumble_server::config: |
     # vi:ft=cfg
