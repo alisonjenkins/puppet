@@ -76,7 +76,7 @@ class profile::cjwdesign (
   mysql::db { $cjwdesign_db_database:
     user     => $cjwdesign_db_database,
     password => $cjwdesign_db_pass,
-    host     => $cjwdesign_db_host,
+    host     => '172.17.0.2',
     grant    => [
       'SELECT',
       'UPDATE',
