@@ -4,7 +4,7 @@ class profile::php56 (
   Array $dns_servers,
 ) {
   docker::run { 'php56':
-    image            => 'php:5.6-fpm-alpine',
+    image            => 'demon012/docker-php56-alpine:latest',
     ports            => [
       "9000:${listen_port}",
     ],
