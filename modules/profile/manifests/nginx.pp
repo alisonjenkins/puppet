@@ -5,20 +5,19 @@ class profile::nginx (
     'ensure' => 'present'
   })
 
-  ensure_resource('service', 'nginx', {
-    'ensure'  => 'running',
-    'enable'  => true,
-    'require' => Package['nginx'],
-  })
-
   file { 'nginx config':
     ensure  => file,
     path    => '/etc/nginx/nginx.conf',
     content => epp('data/nginx/nginx.conf.epp'),
     mode    => '0644',
-    notify  => Service['nginx'],
-    require => Service['nginx'],
+    require => Package['nginx'],
   }
+
+  ~> ensure_resource('service', 'nginx', {
+    'ensure'  => 'running',
+    'enable'  => true,
+    'require' => Package['nginx'],
+  })
 
   $nginx_dirs = [
     '/etc/nginx',
