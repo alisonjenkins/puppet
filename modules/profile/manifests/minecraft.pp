@@ -57,6 +57,7 @@ class profile::minecraft (
         owner   => 'minecraft',
         group   => 'minecraft',
         mode    => '0700',
+        recurse => true,
         require => [
             User['minecraft'],
             Group['minecraft'],
