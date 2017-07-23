@@ -14,6 +14,5 @@ class profile::mysql(
 
   class { '::mysql::client':
     package_name    => $client_package,
-    bindings_enable => true,
   }
 }
