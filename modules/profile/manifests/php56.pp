@@ -15,6 +15,6 @@ class profile::php56 (
     restart_service  => true,
     dns              => ['8.8.8.8', '8.8.4.4'],
     pull_on_start    => true,
-    extra_parameters => ['--restart=always --user="html"'],
+    extra_parameters => ['--restart=always --user="http"'],
   }
 }
