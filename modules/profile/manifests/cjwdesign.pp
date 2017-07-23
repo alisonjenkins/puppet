@@ -14,7 +14,11 @@ class profile::cjwdesign (
   file {'enable cjwdesign nginx config':
     ensure  => link,
     path    => '/etc/nginx/sites-enabled/cjwdesign.net.conf',
-    source  => '/etc/nginx/sites-available/cjwdesign.net.conf',
+    target  => '/etc/nginx/sites-available/cjwdesign.net.conf',
+    require => [
+      File['cjwdesign nginx config'],
+      File['/etc/nginx/sites-enabled'],
+    ],
     notify  => Service['nginx'],
   }
 
