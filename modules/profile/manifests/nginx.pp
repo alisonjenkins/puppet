@@ -16,6 +16,8 @@ class profile::nginx (
     path    => '/etc/nginx/nginx.conf',
     content => epp('data/nginx/nginx.conf.epp'),
     mode    => '0644',
+    notify  => Service['nginx'],
+    require => Service['nginx'],
   }
 
   $nginx_dirs = [
