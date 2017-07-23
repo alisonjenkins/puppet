@@ -3,6 +3,7 @@ classes:
     - profile::mumble_server
     - profile::php56
     - profile::nginx
+    - profile::mysql
     - profile::cjwdesign
 
 profile::mumble_server::config: |
@@ -190,6 +191,7 @@ profile::mumble_server::config: |
     Ice.MessageSizeMax=65536
 
 profile::base::passwordless_sudo: true
+profile::mysql::root_password: ENC[PKCS7,MIIBiQYJKoZIhvcNAQcDoIIBejCCAXYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAxpIEenOFav0c3K4Ijk200/oxUFk8z2MT+5eR4Ykbiz6KEQ2PKH+Xx7L9OrDIigNxpSlIMEbulf6RE0JYzKs+AhkD08whvKOu0Q6Fw0PVzOywkfXWsxXqwjieRoAJQF+uduTt5MlpXsDNWdyJ4NrBWzn5kPX1FuDpJVCn7VVLfJqMbGwrJYDr1eRhKRP67hmZdYdH9XHReU4R8MQ7bGi18ZeQEEsrQ8RLKR0y0So/a4pyvKTXDhT1D3J1/6rWZFqoBXS9Kl4CpdxWdq56Y8xAXRSi4WzTDnhRyvGgzPFgP8mbJmjvTjpU/GiH7sLYcqbHsy/xU47dLXRuVfrs5hSkbzBMBgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBB+9NIIYeoIjcmwzqyGMpw2gCBdJR9bSFKXRKBGweKy1WSBNeBo8jD8aaGRM9Ud1IgWAQ==]
 profile::php56::listen_port: 9001
 profile::php56::dns_servers:
     - 8.8.8.8
