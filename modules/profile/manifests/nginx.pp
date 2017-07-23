@@ -11,6 +11,13 @@ class profile::nginx (
     'require' => Package['nginx'],
   })
 
+  file { 'nginx config':
+    ensure  => file,
+    path    => '/etc/nginx/nginx.conf',
+    content => epp('data/nginx/nginx.conf.epp'),
+    mode    => '0644',
+  }
+
   $nginx_dirs = [
     '/etc/nginx',
     '/etc/nginx/sites-available',
