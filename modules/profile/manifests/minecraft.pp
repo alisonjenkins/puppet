@@ -1,4 +1,10 @@
 class profile::minecraft (
+    String $aws_id,
+    String $aws_key,
+    String $skyfactory_backup_bucket_path,
+    String $skyfactory_backup_retention,
+    String $direwolf20_backup_bucket_path,
+    String $direwolf20_backup_retention,
     String $minecraft_uid = '995',
     String $minecraft_gid = '994',
     Array $dirs = [
@@ -35,7 +41,9 @@ class profile::minecraft (
         '/srv/minecraft/skyfactory3/server.properties',
         '/srv/minecraft/skyfactory3/banned-players.json',
         '/srv/minecraft/skyfactory3/ops.json',
-    ]
+    ],
+    String $direwolf20_world_path = '/srv/minecraft/direwolf20/world',
+    String $skyfactory_world_path = '/srv/minecraft/skyfactory3/world',
 )
 {
     include 'docker'
@@ -110,6 +118,15 @@ class profile::minecraft (
         extra_parameters => ['--restart=always'],
     }
 
+    duplicity { 'direwolf20_backup':
+        directory         => $direwolf20_world_path,
+        dest_id           => $aws_id,
+        dest_key          => $aws_key,
+        target            => $direwolf20_backup_bucket_path,
+        remove_older_than => $direwolf20_backup_retention,
+        require           => Package[$cron_service_package],
+    }
+
     $skyfactory3_vols = [
         '/srv/minecraft/skyfactory3/world:/srv/minecraft/world',
         '/srv/minecraft/skyfactory3/banned-ips.json:/srv/minecraft/banned-ips.json',
@@ -145,5 +162,14 @@ class profile::minecraft (
         restart_service  => true,
         pull_on_start    => true,
         extra_parameters => ['--restart=always'],
+    }
+
+    duplicity { 'skyfactory3_backup':
+        directory         => $skyfactory_world_path,
+        dest_id           => $aws_id,
+        dest_key          => $aws_key,
+        target            => $skyfactory_backup_bucket_path,
+        remove_older_than => $skyfactory_backup_retention,
+        require           => Package[$cron_service_package],
     }
 }
