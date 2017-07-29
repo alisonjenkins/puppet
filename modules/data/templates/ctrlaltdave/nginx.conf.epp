@@ -8,12 +8,6 @@ server {
     access_log /var/log/nginx/ctrlaltdave.access.log;
     error_log /var/log/nginx/ctrlaltdave.error.log;
 
-    location / {
-        # First attempt to serve request as file, then
-        # as directory, then fall back to index.html
-        try_files $uri;
-    }
-
     location = /favicon.ico {
             log_not_found off;
             access_log off;
