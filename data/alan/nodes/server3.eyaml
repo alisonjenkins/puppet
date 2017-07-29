@@ -5,6 +5,8 @@ classes:
     - profile::nginx
     - profile::mysql
     - profile::cjwdesign
+    - profile::kerstiewhiley
+    - profile::ctrlaltdave
 
 profile::mumble_server::config: |
     # vi:ft=cfg
@@ -199,9 +201,43 @@ profile::php56::dns_servers:
 profile::php56::volumes:
     - /srv/http/cjwdesign.net:/srv/http/cjwdesign.net
 
+profile::base::user_accounts:
+    chris:
+        ensure: present
+        groups:
+            - cjwdesign
+        comment: Chris Walthall
+        managehome: true
+        ssh_keys:
+            chris1:
+                type: ssh-rsa
+                key: AAAAB3NzaC1yc2EAAAABJQAAAQEAhSLJvSbz1XCBN9qOnR3nfKYHqLLTDLbJ83tuT+SU2Mio1SGbdTmsrzUIfOoT0M3mSyL6CX4QMcYLNa85nrx8083rc+RN1nh3ifKDB0ZUkxdtVINdMekdBJtBsiSu5oTJ0zXeYb0V967kjW1jo0PG1ieUPJ0eSx71hGVyxBuZaQFF9PPT07Ix+z26l5LnhrEa9lYb0oR8VYxLdgamzgndkiSXK4sILEtxfC7SuIZvirN1NVdwhusvi0KwM+NW0jCo1NnoKpWXYY3VhdU7Ir0KayRKES1fsu9ZdWdAXdoD/8zQMH9fO/mYudRMQ6yMTZs5rt8ewyQj4mlyud5PkTBAMQ==
+            chris2:
+                type: ssh-rsa
+                key: AAAAB3NzaC1yc2EAAAADAQABAAABAQC/tXVp2AWQiYzoAviFJPMu4o6FS7439IbbBFsKaZ0+cGKx8sENn3VJxk12Ty+WmNG5BYnq4nfferql3qELkPSC36ZE/QtnjIR+L3p2gIyhf9yaCvHfiuwf2TIsDEmpF/TbrQOLcWN5iN644DXdpW4u6CXc7F1baeBDmZkuc0To6S5L6GALCvEwphb0CbOxlAllkCIVNCSO0DCJ4gyBMMCXUZZmbO7OEcjkraG+l6lJg1B/MWfXpIviIab9SM219tY5VX4m2yOug6nK6BxnVghNkJWSqNB0IIYJthwGJRewkeSjb/518jc0cfC0NNFaNfbWCOcNoE5TpCAYzyBa+7DR
+    edico:
+        ensure: present
+        groups:
+            - cjwdesign
+        comment: Adam Wood
+        managehome: true
+        ssh_keys:
+            adamwood1:
+                type: ssh-rsa
+                key: AAAAB3NzaC1yc2EAAAADAQABAAABAQCwhP35x0R2jRRwW+dJ5iZzPtg6Cr7UkGM2HHuhqx5QTdNQvn7l+yzrwNlSMQUzqvnL7DnNjJUZrTC0WH3nQAAHl32eI9D5NGaglUxCssYujxhq45BZ/3w1hf9j+PKVMnpcFJtO7Cx45L4L5+gYLlXJzXGa//ArXG2/FBji2SPro6xMfQUkILGr3u8gSe/sE/aXGBI5k6+Anc/AwqBR1Bb3o/beU216Q4w24p0rjbA0j37Xou+UNaZjvfV6Rg/onnm8nI1U79XoDdox/EX8DS8uQSYjiHjVwWNeQ8q/Jdkc+E8AdvET2V2lAJFqUfPkWxdsSWlS1YxnzUQQRCicLz3f
+            adamwood2:
+                type: ssh-rsa
+                key: AAAAB3NzaC1yc2EAAAADAQABAAABAQC+gek1tALDr6mPqXVHIZX1zEqHEzb+xR7HF4SNKDKvaTQ5h99NqmeRA8VQGGhbUkq5OMzN0LZwOjo8bqu/Ah5rewtgOmrYsf7L+Ay92FnGXQQco+JVI318hcoMDlnqhtO/O5+/flgC8ttfx3Dr554jgK7RE+VZrrDntdd6s+rRShMRbtOvxJdKs7M9YSIyVORz80I9GZBuGthLfoFZuyYyoMgcT0yzid/0Tqkc1LxOTiYpJhRQxW+ymeYzQd5TnVC0N/Sj/aGDMRzAW+9srFfpPmvB+fXQnYBAlJ7K9gixRR5lWgMm6Nguu/IMUmb/+ov4daD0OvW4q2yqjh+sQWjF
+            adamwood3:
+                type: ssh-rsa
+                key: AAAAB3NzaC1yc2EAAAADAQABAAABAQC200sV1JRpHjcUsNXoLAJ8s+FGdxaEUF4vkLFKpM6eRwtFjj1amB087C/YcsJ+eB0/1Xvjgo+WVje13227401ORIsAMB+9izvkaHpJsgSnu8RidNmTFwBV2KJXCX/JFkI+w4jPFKL7V6+L7/DzhTx2ppmGaYietvBDZtIiqzr6R9AjJCFrPTKhtFgXH3fXE8IBS+IlHRbLvx4QMAJAI7jtm7cGF7PSF29A7uEWNqHsmpi2jHHY/foG+TMXrMYGYQ1+S4+CtrLeM2ipAYuWjgBNRgOSthsMk7vDnyRroIGMRAN1cASCNme+/GEK5TKWQLYNHT4CExtx/2Z7jf/na/r5
+            deployhq:
+                type: ssh-rsa
+                key: AAAAB3NzaC1yc2EAAAADAQABAAABAQChxzSLYzMFtZv6/H61WE53g6055zhnAa4rjygEsGSwhNkejy04vus5s9nA1b4o+M+ZruJLDeDPmhU/1Oen2lU2htphmx6pq9Pj7hIf4smW0JJumUM00l4isTdHr8N87ERhvzxUPYCs0tvWQumB3JQjdOmkfdz8Luk6mnl735ZOfkREZ2un3XjpzLbsRuHntnvgen8hjyA/gRsMuOO8PcPxoOLN5Q/m9jx42hFmQn0uenBDgyDpq+zT5h2PCvS4ehDyNOyUEgkJ1VGzNtM/G9g0/hkcF5GbgIOFAEH+MuCfn/CyGdvfWrdn6a6MsX2vSiucE6PESnjpIUh3fC03SmQl
 
 profile::cjwdesign::cjwdesign_db_host: ENC[PKCS7,MIIBiQYJKoZIhvcNAQcDoIIBejCCAXYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAamZAHEvxXI2fMpwNeosLfabbkJUosnEXhz1IeuatZXdNzGELHtxBJUk7BZ+6Q0qIaQ5yWusX6TQhUr0Iw/etEv7kF4sByowKBE66q08zi9eP+n9YNt5GSEGjl2MTGnK5Su2CUDRFToFWW7Q1sm1mMos/OnAjpLNc05o+l3Uv1CfnS8LbjgYFQ4Jd3oZlN8eZWnTR/b5RwmHcZ9dVaR1dwwdSPRuUDduUL2sapQBCE4C4yD3GAHJ9AFkJcRgvVRqVbj/vcIiyfIjJb03W2yd1k1Np6hentx1Gh3LVyfdHdYOb5BFAyDjQT0IIcyGB273LdWD0Hl5Y4anCBZ0ItwksZzBMBgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBBfPx3zo33FMe6BLuRCqKXxgCCzubCkkJ9yGd0jrtDrZXQYoV999TFg2Sgg0QvqcuFevw==]
 profile::cjwdesign::cjwdesign_db_database: ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAyyRlsJXGSh9bVR+4RX06omqeB4FW2LmD2m4Roj25fHzCLiXekGkAQjZYwp0sudxK107j+qWBCFk7yU9G4RUH8eKsHh0KNvA7jbcO5OR29gjtCuSzoyXzYwJoFsgepYBmkLlgLZeOVoHvi1FRqrLf2vv/c/617xx2QkoQQksMoENLkPgPdmN5zi3PNaM65ZOrhW0zHXImOFquE2SAqLhaNiu+RtCt0VUpbKczu0Zx6ip40ah1nEAy9B8QLGTqn8dXNuLYivHlgzMu0M59Nme3GwutAlrAIA7h4LOaIKmqAp49904GfY6daASgDkYnqkI8r/gew9rqZb+DuM/z3eRA2zA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBCMcrxjWrge5P/oMz2VcFJYgBAKqs0agDBhMyXWW5yQP51s]
 profile::cjwdesign::cjwdesign_db_user: ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAqp/I/jg8bj8laTRo/NB8dav63JEGvCVy4FFvVAK8tTqENikrJsraoLLrdmCNoSVJfHNIXM7IOOImxqeTHJ0lviYJeK4UI/ji4IW99ro1DB2KYMkMwMBhpFCisa2zao6A9WTaxRB3TF6iwhwh2NOAb/MFbjGMKJryfNgyAT3hfkOLyol/38P0fQ6QIz4Qed/XD7NVlfTa+Ja+HgI9J3prFWq59K7bVKibXR7mxKKlUwllMlA/XPcci9n35J8SeUDjNoKArb3zIGUQ9wjU7ElDSHALVBKkowFOdpVizwmJ8/whvkoHsHYxhmtMPw0qeY+dUGxA0/8aKMUzHhfU+T/gCDA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBClOgzwJVADCG1XICeu6NROgBBi/l3rAE7MhaqhjrADBxIi]
 profile::cjwdesign::cjwdesign_db_pass: ENC[PKCS7,MIIBiQYJKoZIhvcNAQcDoIIBejCCAXYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAlidd/Vx+acMz+PP5Klqqpe3IqmKlty1n25lxlV1Nq1RIOR6Rs5uX3F/9+lgpM3ai1l4hOkZ5kca8STKPr6KUqo411a17BGixsm0b+GeTdWwc7X3kkCmW/VnO6OJV6BzFydv91XGIT0d+lagHf/srnh8r3FY4TuPXRdecYs2WJGSzs/Z26zpihJ3XRs2bE1DiqnCkRRHJOMInr6ubE5Uwlp2++I5Lu5yfqYBJZ0akuVl2+nBM0wPMqQfdVu082Rg5DCzaTTc5XywgYEwpBtjz5IVBmCod4M4n88c+oW23kJXd62ZI/tp6ZFMCYS89Qn6jOFhkJ0mNjPFMfSzz7bNo4TBMBgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBAEvXSuyuKzlNYJ6L28PHLIgCC0Xo/JjZ2HRgemUrsM2Q4BKmzMq+WuwwNpJuobfaeqMg==]
 profile::cjwdesign::drupal_config_path: ENC[PKCS7,MIIBqQYJKoZIhvcNAQcDoIIBmjCCAZYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEANwukjyvbEz3/AOtSulaEZjkxcSkjLVTF2+sc+dnE0sN9LPLBFucRRdydX/7HbGRLQSWIGubddJoriUdP6NhuGs2kjro0bZEKnrCU7YTZL9XZ1nc1vjeWGjhG9/ECTgKYtrMrLUAsfjIJf6clIcR82crIWEHQKsUGIIUz8ue3th/sn0OZolE+rxhBHdqFePv5xPIqN5bMW8KDZGg4JnCs7zcMPvbYCubqB99q1nVJAzOoG2EdoUagkvyFNI5PAc0w5Dv4KCE8lMk+wZ4p1E4aArCTBEGoXdrnQJvNR83ITPed0SBoVVhUbSs+vD2fy3pyQ0nGHqRem++LOzr9z6yrYjBsBgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBB/yFmKlTYgYHyWcCGZrs4NgEAUTmVJTfLa/RcG2R+xkd8Oe/1++y+v6O0YoSmGCCYffdwokJOgEDBIIX9ZLfql9eZy51bb+mBbZiiZl1XIh2kL]
+
