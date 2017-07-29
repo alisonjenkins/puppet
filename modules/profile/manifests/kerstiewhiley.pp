@@ -32,7 +32,7 @@ class profile::kerstiewhiley (
     owner   => 'http',
     group   => 'kerstiewhiley',
     recurse => true,
-    mode    => '0775',
+    mode    => '0644',
     require => Group['kerstiewhiley'],
   }
 

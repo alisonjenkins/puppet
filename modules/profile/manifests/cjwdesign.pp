@@ -37,7 +37,7 @@ class profile::cjwdesign (
     owner   => 'http',
     group   => 'cjwdesign',
     recurse => true,
-    mode    => '0775',
+    mode    => '0644',
     require => Group['cjwdesign'],
   }
 

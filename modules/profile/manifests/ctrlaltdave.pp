@@ -32,7 +32,7 @@ class profile::ctrlaltdave (
     owner   => 'http',
     group   => 'ctrlaltdave',
     recurse => true,
-    mode    => '0775',
+    mode    => '0644',
     require => Group['ctrlaltdave'],
   }
 
