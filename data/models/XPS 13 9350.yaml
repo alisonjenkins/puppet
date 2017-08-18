@@ -2,3 +2,4 @@ classes:
     - profile::periodic_trim
     - profile::xps13bluetooth
     - profile::xps13_touchpad
+    - profile::tlp

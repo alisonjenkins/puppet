@@ -5,7 +5,8 @@ class profile::desktop (
     $magic_keys = 'present',
 )
 {
-    package { $desktop_packages: ensure => latest }
+
+    ensure_packages($desktop_packages, { 'ensure' => 'latest' })
 
     # aur_key_trust { '487EACC08557AD082088DABA1EB2638FF56C0C53':
     #     user => $packager
@@ -31,4 +32,5 @@ class profile::desktop (
         refreshonly => true,
         command     => '/usr/bin/sysctl --system'
     }
+
 }
