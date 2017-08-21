@@ -59,12 +59,12 @@ function connect()
 
     echo "Monitor MD5: ${EDID_MD5}" >> /tmp/monitor_hotplug.log
     echo "Running command: ${xrandr_cmd}" >> /tmp/monitor_hotplug.log
-    $xrandr_cmd
+    eval "$xrandr_cmd"
 
     # Move i3 workspaces.
     if [ -n "${I3MWCMD}" ];
     then
-	$I3MWCMD
+	eval "$I3MWCMD"
     fi
 }
 
