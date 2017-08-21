@@ -7,13 +7,13 @@ class profile::tlp(
   }
 
   if $ensure == 'present' {
-    $service_enabled = true
-    $service_ensure = 'started'_
+    $tlp_service_enable = true
+    $tlp_service_ensure = 'running'
   }
 
   service {'tlp':
-    ensure  => $service_ensure,
-    enabled => $service_enabled,
+    ensure => $tlp_service_ensure,
+    enable => $tlp_service_enable,
   }
 
 }

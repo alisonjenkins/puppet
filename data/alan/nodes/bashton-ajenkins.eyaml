@@ -11,3 +11,4 @@ classes:
     - profile::networkmanager
     - profile::cups
     - profile::lowbat_suspend
+    - profile::tlp
