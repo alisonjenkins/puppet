@@ -14,7 +14,7 @@ class profile::base (
       'ranger',
       'rsync',
       'tmux',
-      'vim'
+      'gvim'
   ],
   $user_accounts = {},
   $passwordless_sudo = false,
