@@ -2,7 +2,6 @@
 Description=Monitor hotplug
 After=suspend.target
 Wants=local-system-resume.service
-Before=local-system-resume.service
 
 [Service]
 Type=simple
