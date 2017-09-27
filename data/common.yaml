@@ -106,6 +106,7 @@ profile::desktop::desktop_packages:
     - python-pip
     - python2-pip
     - qt4
+    - shellcheck
     - sshuttle
     - sysstat
     - termite
