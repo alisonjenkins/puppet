@@ -3,8 +3,9 @@ server {
     server_name  cjwdesign.net;
     return       301 http://www.cjwdesign.net$request_uri;
 }
+
 server {
-    server_name www.cjwdesign.net;
+    server_name www.cjwdesign.net server.cjwdesign.net;
     root /srv/http/cjwdesign.net;
 
     index index.html index.htm index.php;
