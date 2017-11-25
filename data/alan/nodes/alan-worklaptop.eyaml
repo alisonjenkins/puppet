@@ -6,7 +6,6 @@ classes:
     - profile::desktop
     - profile::i3_desktop
     - profile::libvirt_kvm
-    - profile::keyboard_numlock
     - profile::cups
     - profile::tlp
 

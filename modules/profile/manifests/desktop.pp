@@ -3,6 +3,7 @@ class profile::desktop (
     $desktop_packages,
     $packager = 'nobody',
     $magic_keys = 'present',
+    $keyboard_options = 'ctrl:nocaps'
 )
 {
 
@@ -19,6 +20,10 @@ class profile::desktop (
     service { 'sddm':
         enable  => true,
         require => Package['sddm']
+    }
+
+    class {'::xorg_keyboard_config':
+      options => $keyboard_options,
     }
 
     file {'magic keys':
