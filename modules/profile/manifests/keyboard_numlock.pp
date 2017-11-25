@@ -3,28 +3,22 @@ class profile::keyboard_numlock (
 )
 {
   if $default == 'on' {
-    package { 'numlockx':
-      ensure => installed,
-    }
-
-    file_line { 'enable numlock':
-      ensure => present,
-      line   => 'greeter-setup-script=/usr/bin/numlockx on',
-      match  => '^#?greeter-setup-script=',
-      path   => '/etc/lightdm/lightdm.conf'
+    ini_setting {'enable numlock on boot':
+      ensure  => present,
+      path    => '/etc/sddm.conf',
+      section => 'General',
+      setting => 'Numlock',
+      value   => 'on'
     }
   }
   else
   {
-    package { 'numlockx':
-      ensure => absent
-    }
-
-    file_line { 'disable numlock config':
-      ensure => present,
-      line   => '#greeter-setup-script=',
-      match  => '^greeter-setup-script=',
-      path   => '/etc/lightdm/lightdm.conf'
+    ini_setting {'disable numlock on boot':
+      ensure  => present,
+      path    => '/etc/sddm.conf',
+      section => 'General',
+      setting => 'Numlock',
+      value   => 'off'
     }
   }
 }

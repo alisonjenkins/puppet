@@ -34,3 +34,5 @@ mod 'bashtoni-timezone',
   :git => 'https://github.com/bashton-ajenkins/puppet-timezone.git'
 mod 'puppet-duplicity',
   :git => 'https://github.com/mattmcmanus/puppet-duplicity'
+mod 'alanjjenkins-systemd_networkd',
+  :git => 'https://github.com/alanjjenkins/puppet-systemd-networkd.git'
