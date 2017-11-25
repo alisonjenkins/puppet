@@ -1,0 +1,28 @@
+---
+classes:
+    - profile::arch_tweaks
+    - profile::base
+    - profile::bluetooth
+    - profile::desktop
+    - profile::i3_desktop
+    - profile::keyboard_numlock
+    - profile::libvirt_kvm
+    - profile::networkmanager
+    - profile::cups
+    - profile::tlp
+    - profile::amd_driver
+
+profile::base::systemd_networkd_links:
+  wifi:
+    match_original_name: wlan0
+    link_name: wifi
+    link_description: Wireless NIC.
+  wired:
+    match_mac_address: c8:2a:14:14:20:b6
+    link_name: wired
+    link_description: Wired NIC.
+
+profile::base::systemd_networkd_networks:
+  wired: {}
+  wifi:
+    route_metric: '10'

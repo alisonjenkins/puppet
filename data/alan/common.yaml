@@ -26,7 +26,7 @@ profile::base::user_accounts:
                 type: ssh-rsa
                 key: AAAAB3NzaC1yc2EAAAADAQABAAACAQC59zQ+PHIwFrrqupgKl/lQOCXGAbPOgnWWt1dP7Y3v3Si+l+3PI8Ie+HjerZvXrIx2t/6w4lZQxY7WuRk2nZ2F0mbhhqZsIf1Y042FLinCV6Z+ea3g/g+F3tYB0pHHdK49lUKFqpJKas3gxdFWXBuSPjFh+Mmbq/ipVNexl82MyScdUWj/sZSgxQ+TIxLIImwx0XIZOX5YtMJX+li4NeXyiNVAlnb8Km6mkIFXs/wVmU3k1+2jXVy+mdc/fJ6QT+WAsVQuBbX6qizf0A82csmT2hEwo58ynca6DN5CB69NREi3WhbTyzz422P/M5DLOvsIV5GbflFd4edjPN7w1wUx0gkwaldr/aNhgeKrr4m1NvLhZFvNDSRTvCxYHxQ9jCoPxL1l48SEiUh7HUwUkwV79fp2kq3cRozMJ5goLPDFxfJud6Ypqi9FFEaTcClWp9Vh2nDN+o3c/LIKRLzI1/0XpLLeco4oT9HJh0ajPedU1Aldoe9cEBkfoyL04+1X77brZM3WXe5NZCoztbhnIuUI87wE/N1lPkHr2nDtxgsesTyrZFhcG/EarrnGS7stOtroHrmfnFU2hHRWzqYNg5nnCPACGOArok7Z4PsusCZ/gWMxThx9Kw2L7XZV5tjn7At3re+EbJSv/TnYtfHJEigQTOJ32zobYB19xYCpOaSaaw==
         dotfiles_path: /home/alan/git/dotfiles
-        dotfiles_repo: git@github.com:alanjjenkins/dotfiles
+        dotfiles_repo: https://github.com/alanjjenkins/dotfiles.git
         dotfiles_commands:
             - /usr/bin/mkdir -p /home/alan/.config
             - /usr/bin/sudo -u alan -s /usr/bin/ln -sf /home/alan/git/dotfiles/dotsyncrc /home/alan/.dotsyncrc

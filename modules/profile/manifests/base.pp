@@ -7,20 +7,36 @@ class profile::base (
       'bash-completion',
       'docker',
       'git',
+      'gvim',
       'htop',
+      'linux-headers',
       'moreutils',
       'ncdu',
       'pkgfile',
       'ranger',
       'rsync',
       'tmux',
-      'gvim'
+  ],
+  $base_gems = [
+    'hiera-eyaml'
   ],
   $user_accounts = {},
   $passwordless_sudo = false,
+  Hash $systemd_networkd_links = {},
+  Hash $systemd_networkd_networks = {},
 )
 {
   if $facts['os']['family'] =~ /linux$/ {
+    include '::systemd_networkd'
+    # {{{ Setup systemd networking
+    ensure_resources('systemd_networkd::link', $systemd_networkd_links)
+    ensure_resources('systemd_networkd::network', $systemd_networkd_networks)
+    # }}}
+
+    # {{{
+
+    # }}}
+
     # {{{ Define refresh packages command
     exec {'pacman-Sy':
         command     => '/usr/bin/pacman -Sy',
@@ -35,6 +51,7 @@ class profile::base (
     } # }}}
     # {{{ Install packages that should be on all machines.
     ensure_packages($base_packages, { 'ensure' => 'present' })
+    ensure_packages($base_gems, { 'ensure' => 'present', 'provider' => 'gem' })
     # }}}
     # {{{ Initialise pkgfile
     exec {'initialise pkgfile':
