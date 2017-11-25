@@ -130,6 +130,7 @@ profile::desktop::desktop_packages:
   - wget
   - whois
   - wireshark-gtk
+  - wpa_supplicant_gui
   - xclip
   - xdot
   - xdotool
