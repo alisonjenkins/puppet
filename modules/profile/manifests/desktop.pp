@@ -1,6 +1,6 @@
 class profile::desktop (
     $desktop_aur_packages = [],
-    $desktop_packages = [],
+    $desktop_packages,
     $packager = 'nobody',
     $magic_keys = 'present',
 )
@@ -11,14 +11,14 @@ class profile::desktop (
     # aur_key_trust { '487EACC08557AD082088DABA1EB2638FF56C0C53':
     #     user => $packager
     # } ->
-    aurpkg { 'install aur packages':
-        user     => $packager,
-        packages => $desktop_aur_packages
-    }
+    #aurpkg { 'install aur packages':
+    #    user     => $packager,
+    #    packages => $desktop_aur_packages
+    #}
 
-    service { 'lightdm':
+    service { 'sddm':
         enable  => true,
-        require => Package['lightdm']
+        require => Package['sddm']
     }
 
     file {'magic keys':

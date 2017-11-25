@@ -83,8 +83,7 @@ profile::desktop::desktop_packages:
     - keepass
     - libreoffice-fresh-en-GB
     - libsecret
-    - lightdm
-    - lightdm-gtk-greeter
+    - sddm
     - lshw
     - lxsession
     - maim

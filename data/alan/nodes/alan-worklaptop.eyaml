@@ -7,10 +7,8 @@ classes:
     - profile::i3_desktop
     - profile::keyboard_numlock
     - profile::libvirt_kvm
-    - profile::networkmanager
     - profile::cups
     - profile::tlp
-    - profile::amd_driver
 
 profile::base::systemd_networkd_links:
   wifi:
