@@ -1,5 +1,10 @@
-class profile::keyboard_numlock (
-  $default = 'on'
+class profile::keyboard (
+  String $numlock_default = 'on',
+  String $capslock_mode = '',
+  String $model = 'pc104',
+  String $layout = 'gb',
+  String $variant = ',dvorak',
+  String $options = '',
 )
 {
   if $default == 'on' {

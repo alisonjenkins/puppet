@@ -101,8 +101,9 @@ profile::desktop::desktop_packages:
   - networkmanager-vpnc
   - nmap
   - openssh
+  - otf-font-awesome
   - p7zip
-  - packer
+  - packer-io
   - pavucontrol
   - pkgfile
   - powerline-fonts

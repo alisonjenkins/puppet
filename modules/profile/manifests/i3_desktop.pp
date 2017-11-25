@@ -1,9 +1,8 @@
 class profile::i3_desktop (
-  $packages = undef
+  $packages
 ) {
-  package {$packages:
-    ensure => latest,
-  }
+
+  ensure_packages($packages, {'ensure' => 'present' })
 
   file { 'i3exit':
     ensure => file,
