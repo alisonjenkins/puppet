@@ -36,7 +36,7 @@ mod 'puppet-duplicity',
   :git => 'https://github.com/mattmcmanus/puppet-duplicity'
 mod 'alanjjenkins-systemd_networkd',
   :git => 'https://github.com/alanjjenkins/puppet-systemd-networkd.git'
-mod 'alanjjenkins-puppet-xorg-keyboard-config',
+mod 'alanjjenkins-xorg_keyboard_config',
   :git => 'https://github.com/alanjjenkins/puppet-xorg-keyboard-config.git'
 mod 'puppetlabs-inifile',
   :git => 'https://github.com/puppetlabs/puppetlabs-inifile.git'
