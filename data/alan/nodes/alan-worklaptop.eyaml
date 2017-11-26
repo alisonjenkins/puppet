@@ -8,6 +8,7 @@ classes:
     - profile::libvirt_kvm
     - profile::cups
     - profile::tlp
+    - profile::nvidia_driver
 
 profile::base::systemd_networkd_links:
   wifi:
