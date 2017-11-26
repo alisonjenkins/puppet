@@ -15,7 +15,7 @@ profile::base::systemd_networkd_links:
     link_name: wifi
     link_description: Wireless NIC.
   wired:
-    match_mac_address: c8:2a:14:14:20:b6
+    match_original_name: eth0
     link_name: wired
     link_description: Wired NIC.
 
