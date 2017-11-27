@@ -32,6 +32,7 @@ profile::desktop::desktop_aur_packages:
   - google-chrome
   - keybase-bin
   - light
+  - neovim
   - nerd-fonts-complete
   - nodejs-jsonlint
   - perl-email-outlook-message
@@ -54,6 +55,7 @@ profile::desktop::desktop_packages:
   - alsa-utils
   - ansible
   - aria2
+  - awesome-terminal-fonts
   - bind-tools
   - boost
   - ccache
