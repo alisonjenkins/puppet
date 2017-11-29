@@ -38,5 +38,7 @@ mod 'alanjjenkins-systemd_networkd',
   :git => 'https://github.com/alanjjenkins/puppet-systemd-networkd.git'
 mod 'alanjjenkins-xorg_keyboard_config',
   :git => 'https://github.com/alanjjenkins/puppet-xorg-keyboard-config.git'
+mod 'alanjjenkins-wpa_supplicant',
+  :git => 'https://github.com/alanjjenkins/puppet-wpa_supplicant.git'
 mod 'puppetlabs-inifile',
   :git => 'https://github.com/puppetlabs/puppetlabs-inifile.git'
