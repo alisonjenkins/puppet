@@ -11,6 +11,8 @@ classes:
     - profile::nvidia_driver
     - wpa_supplicant
 
+wpa_supplicant::wireless_interface: wifi
+
 profile::base::systemd_networkd_links:
   wifi:
     match_original_name: wlan0
