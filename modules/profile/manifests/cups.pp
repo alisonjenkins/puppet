@@ -3,7 +3,7 @@ class profile::cups (
   String $gui_package = 'system-config-printer',
   Array $packages = [
     'cups',
-    'gtk3-print-backends',
+    'gtk3',
   ],
   String $cups_service_name = 'org.cups.cupsd.service',
 ) {
