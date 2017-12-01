@@ -95,6 +95,7 @@ profile::desktop::desktop_packages:
   - maim
   - mate-notification-daemon
   - mpv
+  - neovim
   - nethogs
   - network-manager-applet
   - networkmanager-openconnect
@@ -111,7 +112,9 @@ profile::desktop::desktop_packages:
   - powerline-fonts
   - puppet
   - pwgen
+  - python-neovim
   - python-pip
+  - python2-neovim
   - python2-pip
   - qt4
   - sddm
