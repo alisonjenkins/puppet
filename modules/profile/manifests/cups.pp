@@ -16,15 +16,7 @@ class profile::cups (
     $install_packages = $packages
   }
 
-  $install_packages.each | String $package |
-  {
-    if !defined(Package[$package])
-    {
-      package { $package:
-        ensure => installed,
-      }
-    }
-  }
+  ensure_packages($install_packages, {'ensure' => 'present'})
 
   service { $cups_service_name:
     hasstatus => true,
