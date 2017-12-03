@@ -16,7 +16,6 @@ classes:
 
 xorg::keyboard_config::keyboard_options: 'ctrl:nocaps'
 
-wpa_supplicant::manage_networks: true
 wpa_supplicant::wireless_interface: wifi
 
 profile::base::systemd_networkd_links:
