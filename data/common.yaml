@@ -58,6 +58,7 @@ profile::desktop::desktop_packages:
   - awesome-terminal-fonts
   - bind-tools
   - boost
+  - cbatticon
   - ccache
   - chromium
   - clang
