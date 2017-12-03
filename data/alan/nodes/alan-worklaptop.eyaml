@@ -10,6 +10,11 @@ classes:
     - profile::tlp
     - profile::nvidia_driver
     - wpa_supplicant
+    - steam
+    - xorg::keyboard_config
+    - xorg::touchpad_config
+
+xorg::keyboard_config::keyboard_options: 'ctrl:nocaps'
 
 wpa_supplicant::manage_networks: true
 wpa_supplicant::wireless_interface: wifi

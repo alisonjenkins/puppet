@@ -22,10 +22,6 @@ class profile::desktop (
         require => Package['sddm']
     }
 
-    class {'::xorg_keyboard_config':
-      options => $keyboard_options,
-    }
-
     file {'magic keys':
         ensure  => $magic_keys,
         path    => '/etc/sysctl.d/magic_keys.conf',

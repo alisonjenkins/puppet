@@ -112,6 +112,7 @@ profile::desktop::desktop_packages:
   - python2-neovim
   - python2-pip
   - qt4
+  - qt5-svg
   - ripgrep
   - sddm
   - shellcheck
