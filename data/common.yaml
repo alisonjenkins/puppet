@@ -74,6 +74,7 @@ profile::desktop::desktop_packages:
   - feh
   - file-roller
   - firefox
+  - fortune-mod
   - freemind
   - gimp
   - git
