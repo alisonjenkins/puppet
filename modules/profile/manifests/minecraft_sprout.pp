@@ -25,7 +25,7 @@ class profile::minecraft_sprout (
         '/home/minecraft/sprout/usercache.json',
         '/home/minecraft/sprout/whitelist.json',
     ],
-    Array $sprout_vols = [
+    Array $vols = [
         '/home/minecraft/sprout/world:/home/minecraft/world',
         '/home/minecraft/sprout/banned-ips.json:/home/minecraft/banned-ips.json',
         '/home/minecraft/sprout/banned-players.json:/home/minecraft/banned-players.json',
@@ -98,7 +98,7 @@ class profile::minecraft_sprout (
             '25565/tcp',
         ],
         env              => [ "MCMEM=${max_ram}" ],
-        volumes          => $sprout_vols,
+        volumes          => $vols,
         memory_limit     => "${max_ram}m", # (format: '<number><unit>', where unit = b, k, m or g)
         dns              => ['8.8.8.8', '8.8.4.4'],
         restart_service  => true,
@@ -107,11 +107,11 @@ class profile::minecraft_sprout (
     }
 
     duplicity { 'sprout_backup':
-        directory         => $sprout_world_path,
+        directory         => $world_path,
         dest_id           => $aws_id,
         dest_key          => $aws_key,
-        target            => $sprout_backup_bucket_path,
-        remove_older_than => $sprout_backup_retention,
+        target            => $backup_bucket_path,
+        remove_older_than => $backup_retention,
         require           => Package[$cron_service_package],
     }
 }
