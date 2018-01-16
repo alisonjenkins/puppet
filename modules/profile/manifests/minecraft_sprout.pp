@@ -43,7 +43,7 @@ class profile::minecraft_sprout (
         '/home/minecraft/sprout/config.override:/srv/minecraft/config.override',
     ],
     String $world_path = '/home/minecraft/sprout/world',
-    String $container_name = 'sprout',
+    String $container_name = 'sprout-minecraft',
     String $image_name = 'demon012/minecraft-sprout',
     String $max_ram = '8192',
     String $minecraft_user_home = '/home/minecraft',
