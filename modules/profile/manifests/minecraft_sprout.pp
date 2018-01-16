@@ -65,8 +65,8 @@ class profile::minecraft_sprout (
         require => Group['minecraft']
     }
 
-    ensure_packages($cron_service_package, {'ensure'             => 'present'})
-    ensure_resources('service', $cron_service_package, {'ensure' => 'running', 'enable' => 'true'})
+    ensure_packages($cron_service_package, {'ensure'   => 'present'})
+    ensure_resources('service', {$cron_service_package => {'ensure' => 'running', 'enable' => 'true'}})
 
     file { $dirs:
         ensure  => directory,
