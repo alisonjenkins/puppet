@@ -3,8 +3,8 @@ class profile::minecraft_sprout (
     String $aws_key,
     String $backup_bucket_path,
     String $backup_retention,
-    String $minecraft_uid = '995',
-    String $minecraft_gid = '994',
+    String $minecraft_uid = '500',
+    String $minecraft_gid = '500',
     Array $dirs = [
         '/home/minecraft',
         '/home/minecraft/sprout',
@@ -97,7 +97,11 @@ class profile::minecraft_sprout (
         expose           => [
             '25565/tcp',
         ],
-        env              => [ "MCMEM=${max_ram}" ],
+        env              => [
+          "MCMEM=${max_ram}",
+          "MCUID=${minecraft_uid}",
+          "MCGID=${minecraft_gid}",
+        ],
         volumes          => $vols,
         memory_limit     => "${max_ram}m", # (format: '<number><unit>', where unit = b, k, m or g)
         dns              => ['8.8.8.8', '8.8.4.4'],
