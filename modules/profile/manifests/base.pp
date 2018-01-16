@@ -153,7 +153,6 @@ class profile::base (
       'sumatrapdf',
       'sysinternals',
       'vagrant',
-      'vim',
       'virtualbox',
       'vlc',
     ]
