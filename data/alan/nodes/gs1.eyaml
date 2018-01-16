@@ -2,7 +2,7 @@
 classes:
     # - docker::images
     - profile::minecraft_sprout
-    - profile::sevendaystodie
+    #- profile::sevendaystodie
 
 # docker::images::images:
 #     demon012/minecraft-direwolf20:
