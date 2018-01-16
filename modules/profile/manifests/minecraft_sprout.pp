@@ -44,7 +44,7 @@ class profile::minecraft_sprout (
     ],
     String $world_path = '/home/minecraft/sprout/world',
     String $container_name = 'sprout',
-    String $image_name = 'sprout',
+    String $image_name = 'demon012/minecraft-sprout',
     String $max_ram = '8192',
     String $minecraft_user_home = '/home/minecraft',
     String $cron_service_package = 'cronie',
