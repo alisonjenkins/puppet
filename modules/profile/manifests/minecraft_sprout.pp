@@ -47,6 +47,7 @@ class profile::minecraft_sprout (
     String $image_name = 'sprout',
     String $max_ram = '8192',
     String $minecraft_user_home = '/home/minecraft',
+    String $cron_service_package = 'cronie',
 )
 {
     include 'docker'
@@ -63,6 +64,9 @@ class profile::minecraft_sprout (
         home    => $minecraft_user_home,
         require => Group['minecraft']
     }
+
+    ensure_packages($cron_service_package, {'ensure'             => 'present'})
+    ensure_resources('service', $cron_service_package, {'ensure' => 'running', 'enable' => 'true'})
 
     file { $dirs:
         ensure  => directory,
@@ -109,6 +113,8 @@ class profile::minecraft_sprout (
         pull_on_start    => true,
         extra_parameters => ['--restart=always'],
     }
+
+
 
     duplicity { 'sprout_backup':
         directory         => $world_path,
