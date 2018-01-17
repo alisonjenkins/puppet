@@ -12,22 +12,21 @@ mod "aur_key_trust", :local => true
 # mod 'bashtoni-timezone', '1.0.0'
 # mod 'sensu-sensu', '2.1.0'
 mod "puppetlabs/firewall"
-mod 'badgerious-windows_env', '2.2.2'
-mod 'bodgit-avahi', '2.0.0'
-mod 'camptocamp-systemd', '0.4.0'
-mod 'chocolatey-chocolatey', '1.2.6'
-mod 'puppetlabs-docker', '1.0.4'
-mod 'joshuar-duply', '0.1.1'
-mod 'lwf-remote_file', '0.1.0'
-mod 'puppetlabs-apt', '2.3.0'
-mod 'puppetlabs-mysql', '3.11.0'
-mod 'puppetlabs-powershell', '2.1.0'
-mod 'puppetlabs-rabbitmq', '5.6.0'
-mod 'puppetlabs-vcsrepo', '1.5.0'
+mod 'badgerious-windows_env'
+mod 'bodgit-avahi'
+mod 'camptocamp-systemd'
+mod 'chocolatey-chocolatey'
+mod 'joshuar-duply'
+mod 'lwf-remote_file'
+mod 'puppetlabs-apt'
+mod 'puppetlabs-mysql'
+mod 'puppetlabs-powershell'
+mod 'puppetlabs-rabbitmq'
+mod 'puppetlabs-vcsrepo'
 mod 'puppetlabs/concat'
 mod 'puppetlabs/stdlib'
-mod 'saz-locales', '2.3.0'
-mod 'themeier-systemd_cron', '0.1.4'
+mod 'saz-locales'
+mod 'themeier-systemd_cron'
 
 # Git modules
 mod 'bashtoni-timezone',
@@ -46,3 +45,5 @@ mod 'alanjjenkins-steam',
   :git => 'https://github.com/alanjjenkins/puppet-steam.git'
 mod 'puppetlabs-inifile',
   :git => 'https://github.com/puppetlabs/puppetlabs-inifile.git'
+mod 'puppetlabs-docker',
+  :git => 'https://github.com/puppetlabs/puppetlabs-docker'
