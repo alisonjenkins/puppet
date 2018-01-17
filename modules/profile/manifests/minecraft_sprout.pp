@@ -22,7 +22,7 @@ class profile::minecraft_sprout (
         '/home/minecraft/sprout/banned-players.json',
         '/home/minecraft/sprout/ops.json',
         '/home/minecraft/sprout/server.properties',
-        '/home/minecraft/sprout/usercache.json',
+        '/home/minecraft/sprout/usernamecache.json',
         '/home/minecraft/sprout/whitelist.json',
     ],
     Array $vols = [
@@ -32,7 +32,6 @@ class profile::minecraft_sprout (
         '/home/minecraft/sprout/logs:/srv/minecraft/logs',
         '/home/minecraft/sprout/crash-reports:/srv/minecraft/crash-reports',
         '/home/minecraft/sprout/ops.json:/srv/minecraft/ops.json',
-        '/home/minecraft/sprout/usercache.json:/srv/minecraft/usercache.json',
         '/home/minecraft/sprout/usernamecache.json:/srv/minecraft/usernamecache.json',
         '/home/minecraft/sprout/whitelist.json:/srv/minecraft/whitelist.json',
         '/home/minecraft/sprout/server.properties:/srv/minecraft/server.properties',
