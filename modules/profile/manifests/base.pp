@@ -16,6 +16,8 @@ class profile::base (
       'ranger',
       'rsync',
       'tmux',
+      'python2-boto',
+      'python-boto'
   ],
   $base_gems = [
     'hiera-eyaml'
