@@ -19,4 +19,12 @@ class profile::mysql(
     package_name    => $client_package,
   }
 
+  file {'/root/.my.cnf':
+    ensure  => file,
+    content => template('data/mysql/dotmy.cnf.erb'),
+    mode    => '0400',
+    owner   => 'root',
+    group   => 'root',
+  }
+
 }
