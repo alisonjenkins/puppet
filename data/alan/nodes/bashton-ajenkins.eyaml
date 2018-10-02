@@ -1,13 +1,14 @@
 ---
 classes:
-    - profile::arch_tweaks
-    - profile::base
-    - profile::bluetooth
-    - profile::desktop
-    - profile::i3_desktop
-    - profile::keyboard_numlock
-    - profile::libvirt_kvm
-    - profile::monitor_hotplug
-    - profile::cups
-    - profile::lowbat_suspend
-    - profile::tlp
+  - profile::arch_tweaks
+  - profile::base
+  - profile::bluetooth
+  - profile::desktop
+  - profile::i3_desktop
+  - profile::keyboard_numlock
+  - profile::libvirt_kvm
+  - profile::monitor_hotplug
+  - profile::networkmanager
+  - profile::cups
+  - profile::lowbat_suspend
+  - profile::tlp
