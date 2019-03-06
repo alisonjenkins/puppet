@@ -7,7 +7,7 @@ class profile::keyboard (
   String $options = '',
 )
 {
-  if $default == 'on' {
+  if $numlock_default == 'on' {
     ini_setting {'enable numlock on boot':
       ensure  => present,
       path    => '/etc/sddm.conf',

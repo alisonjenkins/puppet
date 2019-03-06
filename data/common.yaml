@@ -32,7 +32,6 @@ profile::desktop::desktop_aur_packages:
   - google-chrome
   - keybase-bin
   - light
-  - neovim
   - nerd-fonts-complete
   - nodejs-jsonlint
   - perl-email-outlook-message
@@ -49,6 +48,7 @@ profile::desktop::desktop_aur_packages:
   - yamllint
   - youtube-dl-git
   - zathura-epub-git
+  - electricsheep
 
 profile::desktop::desktop_packages:
   - acpi
@@ -58,9 +58,7 @@ profile::desktop::desktop_packages:
   - awesome-terminal-fonts
   - bind-tools
   - boost
-  - cbatticon
   - ccache
-  - chromium
   - clang
   - cmus
   - compton
@@ -68,7 +66,6 @@ profile::desktop::desktop_packages:
   - dmenu
   - docker-compose
   - dos2unix
-  - electricsheep
   - evince
   - f2fs-tools
   - feh
@@ -90,7 +87,7 @@ profile::desktop::desktop_packages:
   - inkscape
   - iotop
   - keepass
-  - libreoffice-fresh-en-GB
+  - libreoffice-fresh-en-gb
   - libsecret
   - lshw
   - lxsession
@@ -103,7 +100,7 @@ profile::desktop::desktop_packages:
   - openssh
   - otf-font-awesome
   - p7zip
-  - packer-io
+  - packer
   - pavucontrol
   - pkgfile
   - powerline-fonts
@@ -165,7 +162,6 @@ profile::i3_desktop::packages:
 
 profile::desktop::desktop_packages_removed:
   - dmenu-manjaro
-  - libreoffice-still
     # }}}
     # {{{ Libvirt
 profile::libvirt_kvm::libvirt_kvm_packages_removed:

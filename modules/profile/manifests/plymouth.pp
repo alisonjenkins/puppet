@@ -1,7 +1,7 @@
 class profile::plymouth (
-  $display_manager = 'lightdm',
-  $encryption = true,
-  $systemd = true,
+  String $display_manager = 'sddm',
+  Boolean $encryption = true,
+  Boolean $systemd = true,
 ) {
 
   package { 'plymouth':

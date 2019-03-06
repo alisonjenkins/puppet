@@ -1,11 +1,11 @@
 class profile::monitor_hotplug
 (
-  $ensure = 'present',
-  $user,
-  $int_display_name = 'eDP-1',
-  $ext_display_name = 'DP-1',
-  $ext_display_drm_path = '/sys/class/drm/card0-DP-1',
-  $locations = {},
+  String $ensure = 'present',
+  String $user,
+  String $int_display_name = 'eDP1',
+  String $ext_display_name = 'DP1',
+  String $ext_display_drm_path = '/sys/class/drm/card0-DP-1',
+  Hash $locations = {},
 ) {
   exec {'systemctl daemon-reload':
     command     => '/usr/bin/systemctl daemon-reload',

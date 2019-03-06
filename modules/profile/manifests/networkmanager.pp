@@ -11,10 +11,10 @@ class profile::networkmanager(
 
   ensure_packages($packages, { 'ensure' => 'present' })
 
-  package { 'networkmanager':
-    ensure => installed,
-  } ->
   service { 'NetworkManager':
-    enable    => true,
+    enable  => true,
+    require => [
+      Package['networkmanager']
+    ]
   }
 }

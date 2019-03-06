@@ -5,7 +5,7 @@ classes:
   - profile::bluetooth
   - profile::desktop
   - profile::i3_desktop
-  - profile::keyboard_numlock
+  - profile::keyboard
   - profile::libvirt_kvm
   - profile::monitor_hotplug
   - profile::networkmanager

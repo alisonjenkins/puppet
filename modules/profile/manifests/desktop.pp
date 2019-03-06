@@ -17,10 +17,10 @@ class profile::desktop (
     #    packages => $desktop_aur_packages
     #}
 
-    service { 'sddm':
-        enable  => true,
-        require => Package['sddm']
-    }
+    # service { 'sddm':
+    #     enable  => true,
+    #     require => Package['sddm']
+    # }
 
     file {'magic keys':
         ensure  => $magic_keys,

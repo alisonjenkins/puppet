@@ -1,9 +1,8 @@
 class profile::base (
-  $ntp_servers = [],
-  $fallback_ntp_servers = [],
-  $base_packages = [
+  Array $ntp_servers = [],
+  Array $fallback_ntp_servers = [],
+  Array $base_packages = [
       'augeas',
-      'aws-cli',
       'bash-completion',
       'docker',
       'git',
@@ -16,14 +15,18 @@ class profile::base (
       'ranger',
       'rsync',
       'tmux',
-      'python2-boto',
-      'python-boto'
   ],
-  $base_gems = [
+  Array $base_pip = [
+    'awscli',
+    'aws-sam-cli',
+    'boto',
+    'boto3'
+  ],
+  Array $base_gems = [
     'hiera-eyaml'
   ],
-  $user_accounts = {},
-  $passwordless_sudo = false,
+  Hash $user_accounts = {},
+  Boolean $passwordless_sudo = false,
   Hash $systemd_networkd_links = {},
   Hash $systemd_networkd_networks = {},
 )
@@ -112,7 +115,7 @@ class profile::base (
       owner   => 'root',
       group   => 'root',
       mode    => '0440',
-      content => "Defaults env_keep += SSH_AUTH_SOCK\n"
+      content => "Defaults env_keep+=SSH_AUTH_SOCK\n"
     }
     # }}}
     # {{{ User creation
