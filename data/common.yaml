@@ -144,11 +144,6 @@ profile::i3_desktop::packages:
   - i3blocks
   - i3lock
   - i3status
-  - thunar
-  - thunar-archive-plugin
-  - thunar-media-tags-plugin
-  - thunar-volman
-
 
 profile::desktop::desktop_packages_removed:
   - dmenu-manjaro
