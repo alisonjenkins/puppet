@@ -10,6 +10,7 @@ classes:
     - profile::tlp
     - profile::nvidia_driver
     - xorg_keyboard_config
+    - unbound
 #- xorg::touchpad_config
 
 xorg::keyboard_config::keyboard_options: 'ctrl:nocaps'
@@ -30,3 +31,20 @@ profile::base::systemd_networkd_networks:
   wired: {}
   wifi:
     route_metric: '10'
+
+unbound::interface:
+  - '127.0.0.1'
+unbound::access:
+  - '127.0.0.1'
+
+unbound::forward:
+  '.':
+    address:
+      - '2606:4700:4700::1111@853#cloudflare-dns.com'
+      - '1.1.1.1@853#cloudflare-dns.com'
+      - '2606:4700:4700::1001@853#cloudflare-dns.com'
+      - '1.0.0.1@853#cloudflare-dns.com'
+      - '8.8.8.8@853#dns.google'
+      - '8.8.4.4@853#dns.google'
+    forward-ssl-upstream: 'yes'
+unbound::remote::enable: true

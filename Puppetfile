@@ -28,6 +28,7 @@ mod 'puppetlabs/concat'
 mod 'puppetlabs/stdlib'
 mod 'saz-locales'
 mod 'themeier-systemd_cron'
+mod 'zleslie-unbound'
 
 # Git modules
 mod 'bashtoni-timezone',
