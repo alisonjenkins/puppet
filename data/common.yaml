@@ -141,7 +141,6 @@ profile::desktop::desktop_packages:
 
 profile::i3_desktop::packages:
   - rofi
-  - gnome-settings-daemon
   - i3-wm
   - i3blocks
   - i3lock
