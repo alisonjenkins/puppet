@@ -96,7 +96,6 @@ profile::desktop::desktop_packages:
   - p7zip
   - packer
   - pavucontrol
-  - pkgfile
   - powerline-fonts
   - puppet
   - pwgen
