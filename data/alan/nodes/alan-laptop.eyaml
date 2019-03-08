@@ -1,0 +1,32 @@
+---
+classes:
+    - profile::arch_tweaks
+    - profile::base
+    - profile::bluetooth
+    - profile::desktop
+    - profile::i3_desktop
+    - profile::libvirt_kvm
+    - profile::cups
+    - profile::tlp
+    - profile::nvidia_driver
+    - xorg_keyboard_config
+#- xorg::touchpad_config
+
+xorg::keyboard_config::keyboard_options: 'ctrl:nocaps'
+
+wpa_supplicant::wireless_interface: wifi
+
+profile::base::systemd_networkd_links:
+  wifi:
+    match_original_name: wlan0
+    link_name: wifi
+    link_description: Wireless NIC.
+  wired:
+    match_original_name: eth0
+    link_name: wired
+    link_description: Wired NIC.
+
+profile::base::systemd_networkd_networks:
+  wired: {}
+  wifi:
+    route_metric: '10'
