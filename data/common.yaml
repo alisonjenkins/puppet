@@ -86,7 +86,6 @@ profile::desktop::desktop_packages:
   - lshw
   - lxsession
   - maim
-  - mate-notification-daemon
   - mpv
   - neovim
   - nethogs
@@ -145,7 +144,6 @@ profile::i3_desktop::packages:
   - i3blocks
   - i3lock
   - i3status
-  - mate-notification-daemon
   - thunar
   - thunar-archive-plugin
   - thunar-media-tags-plugin
