@@ -46,5 +46,5 @@ unbound::forward:
       - '1.0.0.1@853#cloudflare-dns.com'
       - '8.8.8.8@853#dns.google'
       - '8.8.4.4@853#dns.google'
-    forward-ssl-upstream: 'yes'
+    forward_ssl_upstream: 'yes'
 unbound::remote::enable: true
