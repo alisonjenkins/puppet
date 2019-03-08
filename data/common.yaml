@@ -62,7 +62,6 @@ profile::desktop::desktop_packages:
   - clang
   - cmus
   - compton
-  - cups
   - dmenu
   - docker-compose
   - dos2unix
